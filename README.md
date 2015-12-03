@@ -1,2 +1,8 @@
 # Rating by Proximity App
-### @GA-DC WDI Project 3 
+### @ga-dc WDI Project 3
+
+Group:
+* @jacohen10
+* @rebeccaestes
+* @markham
+* @mpopv
