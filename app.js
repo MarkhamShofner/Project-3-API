@@ -1,9 +1,10 @@
 var express = require("express");
 var app = express();
 var path = require("path");
-var locationsController = require("./controllers/locationsController");
+var bodyParser = require("body-parser");
 
 app.use(express.static(path.join(__dirname, "/public")));
+app.use(bodyParser.json());
 
 app.get("/", function(req, res){
   res.render("index.html");
