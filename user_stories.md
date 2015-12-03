@@ -1,0 +1,13 @@
+#User Stories
+
+###As a **user**, I want to be able to...
+> ...use a map to find locations that I can get scores from.
+
+###As a **renter**, I want to be able to...
+> ...see multiple score types (food, retail, restaurant, bar, public transportation, etc.) so I can decide on a place to rent.
+
+###As a **user**, I want to be able to...
+> ...get scores based on latest info from Yelp and other services, so that I know the scores I'm looking up are accurate.
+
+###As a **user**, I want to be able to...
+> ...login with and share to social services like Facebook and Twitter so it's easier to use and share this app.
