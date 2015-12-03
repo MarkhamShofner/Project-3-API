@@ -7,4 +7,4 @@ var Location = function(info){
   // this.id = info.id;
 };
 
-// module.exports = Location;
+module.exports = Location;
