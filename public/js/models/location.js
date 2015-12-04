@@ -1,6 +1,3 @@
-require("../db/schema");
-var mongoose = require('mongoose');
-
 var Location = function(info){
   this.name = info.name;
   this.lat = info.lat;
