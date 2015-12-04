@@ -6,7 +6,7 @@ $(document).ready(function(){
   var map = L.map('map').setView([38.9047, -77.0164], 13);
   L.tileLayer('https://api.tiles.mapbox.com/v4/rebeccae.ob42lgga/{z}/{x}/{y}.png?access_token=' + apiKey, {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-      id: "rebeccae.ob42lgga"
+      id: "rebeccae.ob42lgga",
       accessToken: apiKey
   }).addTo(map);
 
@@ -24,7 +24,6 @@ $(document).ready(function(){
       fillOpacity: 0.25
     }).addTo(map);
   }
-
 
   map.on('click', onMapClick);
 });

@@ -21,4 +21,4 @@ Location.fetch = function(){
 };
 
 // do we need this?????
-module.exports = Location;
+// module.exports = Location;
