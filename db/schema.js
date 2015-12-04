@@ -5,14 +5,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
-
 // defining schema for locations.
 var LocationSchema = new Schema({
   name: String,
-  lat: Integer,
-  long: Integer,
+  lat: Number,
+  long: Number,
   type: String,
-  score: Integer
+  score: Number
 });
 
 // setting models in mongoose utilizing schemas defined above, we'll be using
