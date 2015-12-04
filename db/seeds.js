@@ -9,13 +9,22 @@ var conn = mongoose.connect('mongodb://localhost/locations');
 var LocationModel = require("../models/location");
 LocationModel.remove({}, function(err){});
 
-var foundersss = new LocationModel({name: "foundersss"});
-var farmerss = new LocationModel({name: "farmerss"});
+var locations = [];
+var bars = [];
+for(var i = 1; i < 10; i++){
+  bars[i] = new LocationModel({name: "bar"+[i]});
+  locations.push(bars[i]);
+}
 
-foundersss.save(function(err){
+// var mcdonalds = new LocationModel({name: "mcdonalds"});
+// var chipotle = new LocationModel({name: "chipotle"});
+
+for (var i =0; i < locations.length; i++){
+  locations[i].save(function(err){
     if (err){
       console.log(err);
     }else {
       console.log("location was saved");
     }
   });
+}
