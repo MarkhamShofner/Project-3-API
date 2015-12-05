@@ -2,3 +2,7 @@
   height: 400px;
   width: 90%;
 }
+
+path {
+  stroke-opacity: 0;
+}

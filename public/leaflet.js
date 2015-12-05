@@ -20,7 +20,7 @@ $(document).ready(function(){
     var newCircle = L.circle([e.latlng.lat, e.latlng.lng], 200, {
       color: '#ffffff',
       fillColor: selectedColor,
-      fillOpacity: 0.25
+      fillOpacity: 0.25,
     }).addTo(map);
   }
 
