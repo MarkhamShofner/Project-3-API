@@ -12,7 +12,9 @@ app.get("/", function(req, res){
   res.render("index.html");
 });
 
-app.get("/locations", locationsController.index);
+
+var routes = require('./config/routes');
+app.use(routes);
 
 app.listen(3000, function(){
   console.log("app listening at http://localhost:3000/");
