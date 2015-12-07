@@ -10,17 +10,22 @@ $(document).ready(function(){
 
   var popup = L.popup();
 
-  function onMapClick(e) {
-    // popup
-    //   .setLatLng(e.latlng)
-    //   .setContent(Button message???)
-    //   .openOn(map);
-    var selectedColor = prompt("Pick a color");
-    var newCircle = L.circle([e.latlng.lat, e.latlng.lng], 200, {
+  function drawLocation(lat, lng, color) {
+    var newCircle = L.circle([lat, lng], 200, {
       color: '#ffffff',
-      fillColor: selectedColor,
-      fillOpacity: 0.25
-    }).addTo(map);
+      fillColor: color,
+      fillOpacity: 0.25,
+    }).addTo(map);    
+  };
+
+  function onMapClick(e) {
+    var selectedColor = prompt("Pick a color");
+    drawLocation(e.latlng.lat, e.latlng.lng, selectedColor);
+    // saveLocation(e.latlng.lat, e.latlng.lng, selectedColor);
+  };
+
+  function saveLocation(e) {
+    // post this to an API.
   }
 
 
