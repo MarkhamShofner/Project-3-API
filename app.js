@@ -3,10 +3,11 @@ var app = express();
 var path = require("path");
 var bodyParser = require("body-parser");
 var passport     = require('passport');
-
 var locationsController = require("./controllers/locationsController");
+var flash        = require('connect-flash');
 
-// app.set("view engine", "hbs");
+
+app.set("view engine", "hbs");
 
 app.use(express.static(path.join(__dirname, "/public")));
 
