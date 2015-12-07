@@ -19,6 +19,3 @@ Location.fetch = function(){
   });
   return request;
 };
-
-// do we need this?????
-module.exports = Location;
