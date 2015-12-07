@@ -3,6 +3,7 @@ var app = express();
 var path = require("path");
 var bodyParser = require("body-parser");
 var locationsController = require("./controllers/locationsController");
+var seeds = require("./db/seeds");
 
 // app.set("view engine", "hbs");
 
