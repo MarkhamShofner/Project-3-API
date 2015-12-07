@@ -10,17 +10,26 @@ $(document).ready(function(){
 
   var popup = L.popup();
 
+  printCircleMarker(38.91, -77.012);
+  printCircleMarker(38.895, -77.023);
+  printCircleMarker(38.913, -77.035);
+  printCircleMarker(38.921, -77.018);
+  printCircleMarker(38.894, -77.038);
+  printCircleMarker(38.91, -77.032);
+  printCircleMarker(38.89, -76.98);
+
   function drawLocation(lat, lng, color) {
-    var newCircle = L.circle([lat, lng], 200, {
+    var newCircle = L.circle([lat, lng], 1000, {
       color: '#ffffff',
       fillColor: color,
       fillOpacity: 0.25,
-    }).addTo(map);    
+    }).addTo(map);
   };
 
-  function onMapClick(e) {
-    var selectedColor = prompt("Pick a color");
-    drawLocation(e.latlng.lat, e.latlng.lng, selectedColor);
+  function printCircleMarker(lat, lng) {
+    var selectedColor = "#FF0000";
+    drawLocation(lat, lng, selectedColor);
+    L.marker([lat, lng], {riseOnHover: true}).addTo(map);
     // saveLocation(e.latlng.lat, e.latlng.lng, selectedColor);
   };
 
@@ -28,6 +37,14 @@ $(document).ready(function(){
     // post this to an API.
   }
 
+  function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+  }
 
   map.on('click', onMapClick);
+
+
 });
