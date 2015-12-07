@@ -2,6 +2,8 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var bodyParser = require("body-parser");
+var passport     = require('passport');
+
 var locationsController = require("./controllers/locationsController");
 
 // app.set("view engine", "hbs");
