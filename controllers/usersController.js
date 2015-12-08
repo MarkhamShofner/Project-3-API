@@ -33,8 +33,8 @@ function postLogin(req, res) {
 
 // GET /logout
 function getLogout(req, res) {
-  // req.logout();
-  // res.redirect('/');
+  req.logout();
+  res.redirect('/');
 }
 
 // Restricted page

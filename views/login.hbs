@@ -1,19 +1,25 @@
 <h2>Login</h2>
-
 {{#if message}}
   <div class="alert alert-danger">{{message}}</div>
 {{/if}}
 
-<form method="post" action="/login">
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input class="form-control" type="text" name="email" id="email">
-  </div>
+{{#if currentUser}}
+  <p>You're already logged in as {{currentUser.local.email}}. <a href="/">Go home</a>.</p>
 
-  <div class="form-group">
-    <label for="email">Password</label>
-    <input class="form-control" type="password" name="password" id="password">
-  </div>
+{{else}}
 
-  <input class="btn btn-default" type="submit">
-</form>
+  <form method="post" action="/login">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input class="form-control" type="text" name="email" id="email">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Password</label>
+      <input class="form-control" type="password" name="password" id="password">
+    </div>
+
+    <input class="btn btn-default" type="submit">
+  </form>
+
+{{/if}}

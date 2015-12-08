@@ -28,8 +28,8 @@ router.route('/login')
   .get(usersController.getLogin)
   .post(usersController.postLogin)
 
-// router.route("/logout")
-//   .get(usersController.getLogout)
+router.route("/logout")
+  .get(usersController.getLogout)
 
 // router.route("/secret")
 //   .get(authenticatedUser, usersController.secret)
