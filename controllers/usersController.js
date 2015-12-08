@@ -12,7 +12,7 @@ function postSignup(req, res) {
     failureRedirect : '/signup',
     failureFlash : true
   });
-  return signupStrategy(req, res); // CODE BREAKS HERE
+  return signupStrategy(req, res); 
   console.log("halp");
 }
 

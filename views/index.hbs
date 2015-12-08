@@ -15,7 +15,10 @@
   </head>
   <body>
     <div class="sidebar">
-      <a href="/signup">sign up</a> * <a href="/login">log in </a> * <a href="/logout">log out</a>
+    {{#if currentUser}}<p><a href="/logout">Log Out</a></p>
+    {{else}}
+      <p><a href="/signup">Sign Up</a> / <a href="/login">Log In</a></p>
+    {{/if}}
     </div>
     <div id="map">
     </div>

@@ -20,6 +20,9 @@ var passport = require("passport");
 router.route('/')
   .get(locationsController.index);
 
+router.route('/hbs')
+  .get(locationsController.hbs);
+
 router.route('/signup')
   .get(usersController.getSignup)
   .post(usersController.postSignup)

@@ -12,7 +12,7 @@ var hbs   = require("hbs");
 var locationsController = require("./controllers/locationsController");
 var seeds = require("./db/seeds");
 
-mongoose.connect('mongodb://localhost/local-authentication-with-passport');
+// mongoose.connect('mongodb://localhost/local-authentication-with-passport');
 
 app.use(morgan('dev'));
 app.use(cookieParser());
