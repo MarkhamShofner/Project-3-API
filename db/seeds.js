@@ -10,7 +10,7 @@ var locations = [];
 var bars = [];
 var adj = [ "Prancing", "Smelly", "Stinky", "Insolent", "Furious", "Happy", "Frolicking", "Drunken" ];
 var noun = [ "Crab", "Elephant", "Giraffe", "Pirate", "Sailor", "Warthog", "Jester", "Stag", "Knight" ];
-var types = [ "Dive bar", "Saloon", "Nightclub", "Irish bar", "Rave warehouse", "English pub" ];
+var types = [ "Dive bar", "Saloon", "Nightclub", "Irish bar", "Rave warehouse", "English pub", "Brewery" ];
 
 // TODO - is this line needed for non-local deployment - var db = mongoose.connection;
 // save for later - if splitting out seeds data generation

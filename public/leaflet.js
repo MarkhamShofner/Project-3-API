@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-  var map = L.map('map').setView([38.9047, -77.0164], 13);
+  var map = L.map('map').setView([38.900, -76.999], 13);
   L.tileLayer('https://api.tiles.mapbox.com/v4/rebeccae.ob42lgga/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicmViZWNjYWUiLCJhIjoiY2locW50eDhwMDRxaXRnbTQ4NGZqM3F4ZiJ9.bdeGen8FhiVQqFbI7Vz0lA', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       id: "rebeccae.ob42lgga",
@@ -29,7 +29,7 @@ $(document).ready(function(){
   function printCircleMarker(lat, lng) {
     var selectedColor = "#FF0000";
     drawLocation(lat, lng, selectedColor);
-    L.marker([lat, lng], {riseOnHover: true}).addTo(map);
+    L.marker([lat, lng]).addTo(map);
     // saveLocation(e.latlng.lat, e.latlng.lng, selectedColor);
   };
 
