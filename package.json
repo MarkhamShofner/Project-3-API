@@ -23,6 +23,7 @@
     "hbs": "^4.0.0",
     "kerberos": "0.0.17",
     "method-override": "^2.3.5",
-    "mongoose": "^4.2.9"
+    "mongoose": "^4.2.9",
+    "yelp": "^1.0.1"
   }
 }
