@@ -17,15 +17,20 @@
   },
   "homepage": "https://github.com/MarkhamShofner/Project-3-API#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
     "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.0",
     "express": "^4.13.3",
+    "express-session": "^1.12.1",
     "flash": "^1.1.0",
     "handlebars": "^4.0.5",
     "hbs": "^4.0.0",
     "kerberos": "0.0.17",
     "method-override": "^2.3.5",
     "mongoose": "^4.2.9",
-    "passport": "^0.3.2"
+    "morgan": "^1.6.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   }
 }
