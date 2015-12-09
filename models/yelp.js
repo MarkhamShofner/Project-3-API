@@ -6,7 +6,7 @@ var yelp = new Yelp({
   consumer_key: env.yelp.consumer_key,
   consumer_secret: env.yelp.consumer_secret,
   token: env.yelp.token,
-  token_secret: env.yelp.token_secret,
+  token_secret: env.yelp.token_secret
 });
 
 module.exports = yelp;
