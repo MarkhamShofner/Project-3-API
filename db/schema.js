@@ -1,5 +1,6 @@
 // requiring mongoose dependency
 var mongoose = require('mongoose');
+var conn = mongoose.connect(process.env.PROD_MONGODB || 'mongodb://127.0.0.1:27017/locations');
 
 // instantiate a name space for our Schema constructor defined by mongoose.
 var Schema = mongoose.Schema,

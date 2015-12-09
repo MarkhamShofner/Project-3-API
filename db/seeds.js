@@ -2,7 +2,6 @@
 
 require("./schema");
 var mongoose = require("mongoose");
-var conn = mongoose.connect('mongodb://localhost/locations');
 
 //[][][][][][][][][]>>> Variable Declarations <<<[][][][][][][][][]//
 
