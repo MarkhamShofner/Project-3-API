@@ -10,7 +10,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var hbs   = require("hbs");
 var locationsController = require("./controllers/locationsController");
-var seeds = require("./db/seeds");
+
 
 // mongoose.connect('mongodb://localhost/local-authentication-with-passport');
 

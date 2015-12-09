@@ -47,7 +47,7 @@ for(var i = 1; i < 15; i++){
     score: randInt(0, 10)
   });
   locations.push(bars[i])
-  console.log(bars[i].name + " is a " + bars[i].type + " with score " + bars[i].score);
+  // console.log(bars[i].name + " is a " + bars[i].type + " with score " + bars[i].score);
 }
 
 for (var i =0; i < locations.length; i++){
@@ -55,7 +55,7 @@ for (var i =0; i < locations.length; i++){
     if (err){
       console.log(err);
     }else {
-      console.log( "Location " + locations[i] + " saved." );
+      console.log( "Location saved." );
     }
   });
 }
