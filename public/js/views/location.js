@@ -1,3 +1,5 @@
+console.log("/js/views/location.js is loaded");
+
 var LocationView = function(location){
   // set a Location model as a property of the view
   this.location = location;
@@ -10,7 +12,7 @@ LocationView.prototype = {
   locationTemplate: function(location){
     var html = $("<div></div>");
     html.append("<h2>" + location.name + "</h2>");
-    html.append("<p class='description'>" + location.description + "</p>")
+    html.append("<p class='category'>Category: " + location.category + "</p>")
     html.append("<img class='business-photo' alt='Photograph of " + location.name + "' src='" + location.image_url + "'>");
     return(html);
   },

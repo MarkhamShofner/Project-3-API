@@ -1,9 +1,16 @@
+console.log("/js/models/location.js is loaded");
+
 var Location = function(info){
   this.lat = info.lat;
   this.long = info.long;
 };
 
+console.log(">>>>>>> RIGHT BEFORE loadLocation");
+
 Location.prototype.loadLocation = function(){
+
+  console.log(">>>>>>> RIGHT INSIDE loadLocation");
+
   var self = this
 
   //  passes through a map bounds object, which will return this:
@@ -19,24 +26,22 @@ Location.prototype.loadLocation = function(){
   // now we have to parse these things into something
 
   var url = "/yelp"
-  var request = $.getJSON(url)
-  .then(function(response){
+  var request = $.getJSON(url).then(function(response){
 
     self.name = response.businesses[0].name
     self.category = response.businesses[0].categories[0][0]
     self.image_url = response.businesses[0].image_url
 
     // --- Eventually: Loop over responses and return an array of hashes? -----
-
-    // for(var i = 0; i < response.businesses.length; i++){
-    //
+    //   for (var i = 0; i < response.businesses.length; i++) {
     //   var self = this
-    //   self.
-    //
+    //   ...whatever...
     // }
 
-  }).fail(function(response){
-    console.log("Failed to load JSON.");
-  });
-  return request;
-};
+  }).fail(function(response){ console.log("Failed to load JSON."); });
+
+  return request
+
+}
+
+console.log(">>>>>>> RIGHT AFTER loadLocation");
