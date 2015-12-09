@@ -4,14 +4,20 @@ $(document).ready(function(){
 	// 	console.log("you clicked");
 	// }
 
-	$('#openPopup').on('click', function(e){
-		console.log("click");
-		$("#popup").show();
-        // $("body").append(''); $("#popup").show(); 
-        // $(".close").click(function(e) { 
-        //     $(".popup, .overlay").hide(); 
+	$('#openLogin').on('click', function(e){
+		$("#signupPopup").hide();
+		$("#loginPopup").show();
+		$("#openLogin").addClass('selected');
+		$("#openSignup").removeClass('selected');
+
     }); 
 
+    $('#openSignup').on('click', function(e){
+		$("#loginPopup").hide();
+		$("#signupPopup").show();
+		$("#openSignup").addClass('selected');
+		$("#openLogin").removeClass('selected');
 
+    }); 
 
 });

@@ -24,14 +24,40 @@ path {
   z-index: 998;
 }
 
-#popup {
-    padding: 10px 10px 35px;
-    background-color: grey;
-    z-index: 999;
-    display: none;
-    position: absolute;
-    margin-left: 20%;
-    border: 1px solid black;
+.authPopup {
+  padding: 10px 10px 35px;
+  background-color: grey;
+  z-index: 999;
+  display: none;
+  position: absolute;
+  margin-left: 20%;
+  border: 1px solid black;
+  height: 75px;
+  margin-top: 5%;
+}
+
+button > a {
+  text-decoration: none;
+  color: black;
+}
+
+p {
+    margin: 10px;
+}
+
+button {
+  height: 30px;
+  width: 70px;
+  font-family: verdana;
+  border-radius: 5px;
+}
+
+.selected {
+  font-weight: bold;
+}
+
+button:hover {
+  font-style: italic;
 }
 
 @media (max-width: 768px) {
@@ -39,8 +65,8 @@ path {
     position: relative;
     right: auto;
     width: 100%;
-    height: 300px;
-    margin: 0;
+    height: 100px;  
+/*    margin-top: 25px;*/
   }
 
   #map {

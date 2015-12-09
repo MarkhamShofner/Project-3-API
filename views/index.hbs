@@ -18,16 +18,35 @@
   <body>
     <div class="sidebar">
 
-    {{#if currentUser}}<p><a href="/logout">Log Out</a></p>
+    {{#if currentUser}}
+    <p><button id="logout" class="userauth"><a href="/logout">Log out</a></button></p>
     {{else}}
-      <p><a href="/signup">Sign Up</a> / <a href="/login">Log In</a></p>
-       <p><button id="openPopup">Modal log in</button></p>
+       <p><button id="openLogin" class="userauth">Log in</button></p>
+       <p><button id="openSignup" class="userauth">Sign up</button></p>
     {{/if}}
     </div>
 
-    <div id="popup">
+    <div id="loginPopup" class="authPopup">
      <form method="post" action="/login">
         <div class="form-group">
+          <p>Log In:</p>
+          <label for="email">Email</label>
+          <input class="form-control" type="text" name="email" id="email">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Password</label>
+          <input class="form-control" type="password" name="password" id="password">
+        </div>
+
+        <input class="btn btn-default" type="submit">
+      </form>
+    </div>
+
+    <div id="signupPopup" class="authPopup">
+      <form method="post" action="/signup">
+        <div class="form-group">
+          <p>Sign Up:</p>
           <label for="email">Email</label>
           <input class="form-control" type="text" name="email" id="email">
         </div>
