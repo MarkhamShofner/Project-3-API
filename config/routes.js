@@ -32,6 +32,6 @@ router.route("/logout")
   .get(usersController.getLogout);
 
 router.route("/yelp")
-  .get(yelpController.search);
+  .post(yelpController.search);
 
 module.exports = router;
