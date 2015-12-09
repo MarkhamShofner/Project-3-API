@@ -18,7 +18,18 @@ $(document).ready(function() {
     frontParams.longitude = $(".searchLongitude").val();
     frontParams.term = $(".searchType").val();
 		console.log(frontParams);
-			
+
+		
+
+		$.ajax({
+		  type: 'GET',
+		  dataType: 'json',
+		  url: "http://localhost:3000/yelp"
+		}).done(function(response) {
+		  console.log(response);
+		}).fail(function(response){
+		  console.log("Ajax get request failed.");
+		});
 
 
   });
