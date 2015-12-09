@@ -14,24 +14,24 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var locationsController = require('../controllers/locationsController');
 var usersController = require('../controllers/usersController');
+var yelpController = require('../controllers/yelpController');
 var passport = require("passport");
-
 
 router.route('/')
   .get(locationsController.index);
 
 router.route('/signup')
   .get(usersController.getSignup)
-  .post(usersController.postSignup)
+  .post(usersController.postSignup);
 
 router.route('/login')
   .get(usersController.getLogin)
-  .post(usersController.postLogin)
+  .post(usersController.postLogin);
 
 router.route("/logout")
-  .get(usersController.getLogout)
+  .get(usersController.getLogout);
 
-// router.route("/secret")
-//   .get(authenticatedUser, usersController.secret)
+router.route("/yelp")
+  .get(yelpController.search);
 
 module.exports = router;
