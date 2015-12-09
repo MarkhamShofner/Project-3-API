@@ -8,7 +8,6 @@ var yelpController = {
       ll: "38.999, -79.011",
       limit: 3
     };
-
     Yelp.search(params)
     .then(function(data) {
       res.json(data);
