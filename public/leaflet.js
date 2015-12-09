@@ -44,18 +44,42 @@ $(document).ready(function(){
         .openOn(map);
   }
 
-  map.on('click', onMapClick);
+  // map.on('click', onMapClick);
 
-  map.on('moveend', function() {
-    e.preventDefault() // prevents a page refresh, which we don't want
-    var bounds = map.getBounds(); // grabs and stores the Leaflet map boundaries
-    location = new Location(bounds)     // creates a new location object using our Location constructor
-    forecast.loadLocation().then(function(){   // calls .loadLocation to make the API call
-      view = new LocationView(location) // in the promise we create a new view passing in the location object
-      view.clearContainer() // empties location if one already exists
-      view.render() // renders the new location
-    })
-  })
+  // map.on('moveend', function() {
+  //   e.preventDefault() // prevents a page refresh, which we don't want
+  //   // var bounds = map.getBounds(); // grabs and stores the Leaflet map boundaries
+  //   var long = $(".searchLong").val()
+  //   var lat = $(".searchLat").val()
+  //   location = new Location({long: long, lat: lat})     // creates a new location object using our Location constructor
+  //   forecast.loadLocation().then(function(){   // calls .loadLocation to make the API call
+  //     view = new LocationView(location) // in the promise we create a new view passing in the location object
+  //     view.clearContainer() // empties location if one already exists
+  //     view.render() // renders the new location
+  //   })
+  // })
+
+   $(".search").on("submit", function(e){
+     e.preventDefault(); // prevents a page refresh, which we don't want
+     // var bounds = map.getBounds(); // grabs and stores the Leaflet map boundaries
+     var long = $(".searchLong").val()
+     var lat = $(".searchLat").val()
+     location = new Location({long: long, lat: lat})     // creates a new location object using our Location constructor
+     location.loadLocation().then(function(){   // calls .loadLocation to make the API call
+       view = new LocationView(location) // in the promise we create a new view passing in the location object
+       view.clearContainer() // empties location if one already exists
+       view.render() // renders the new location
+     })
+   });
+
+  //  $(".test").on("click", function(e){
+  //    e.preventDefault();
+  //    location = new Location({long: "nothing", lat: "nothing"})     // creates a new location object using our Location constructor
+  //    location.loadLocation().then(function(){   // calls .loadLocation to make the API call
+  //      view = new LocationView(location) // in the promise we create a new view passing in the location object
+  //      view.clearContainer() // empties location if one already exists
+  //      view.render() // renders the new location
+  //  });
 
 
 });

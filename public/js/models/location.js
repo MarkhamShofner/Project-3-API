@@ -1,13 +1,12 @@
 var Location = function(info){
-  this.name = info.name;
-  this.category = info.category;
-  this.image_url = info.image_url;
+  this.lat = info.lat;
+  this.long = info.long;
 };
 
 Location.prototype.loadLocation = function(){
   var self = this
-  
-  //  info passes through a map bounds object, which will return this:
+
+  //  passes through a map bounds object, which will return this:
   //
   //  bounds.LatLngBounds
   //    _northEast: o.LatLng
