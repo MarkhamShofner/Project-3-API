@@ -24,6 +24,10 @@ path {
   z-index: 9999;
 }
 
+#popup {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .sidebar {
     position: relative;
