@@ -32,7 +32,7 @@ path {
   position: absolute;
   margin-left: 20%;
   border: 1px solid black;
-  height: 75px;
+  height: 60px;
   margin-top: 5%;
 }
 
@@ -45,11 +45,21 @@ p {
     margin: 10px;
 }
 
-button {
+.userauth {
   height: 30px;
   width: 70px;
   font-family: verdana;
   border-radius: 5px;
+}
+
+h3 {
+  margin-top: 0px;
+  margin-bottom: 3px;
+}
+
+.close {
+  /*margin-left: 200px;*/
+  float: right;
 }
 
 .selected {
@@ -59,6 +69,7 @@ button {
 button:hover {
   font-style: italic;
 }
+
 
 @media (max-width: 768px) {
   .sidebar {

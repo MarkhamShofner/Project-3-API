@@ -29,7 +29,8 @@
     <div id="loginPopup" class="authPopup">
      <form method="post" action="/login">
         <div class="form-group">
-          <p>Log In:</p>
+          <button class="close">x</button>
+          <h3>Log In:</h3>
           <label for="email">Email</label>
           <input class="form-control" type="text" name="email" id="email">
         </div>
@@ -44,9 +45,11 @@
     </div>
 
     <div id="signupPopup" class="authPopup">
+            <button class="close">x</button>
+
       <form method="post" action="/signup">
         <div class="form-group">
-          <p>Sign Up:</p>
+          <h3>Sign Up:</h3>
           <label for="email">Email</label>
           <input class="form-control" type="text" name="email" id="email">
         </div>
