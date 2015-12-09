@@ -10,13 +10,13 @@ $(document).ready(function(){
 
   var popup = L.popup();
 
-  printCircleMarker(38.91, -77.012);
-  printCircleMarker(38.895, -77.023);
-  printCircleMarker(38.913, -77.035);
-  printCircleMarker(38.921, -77.018);
-  printCircleMarker(38.894, -77.038);
-  printCircleMarker(38.91, -77.032);
-  printCircleMarker(38.89, -76.98);
+  // printCircleMarker(38.91, -77.012);
+  // printCircleMarker(38.895, -77.023);
+  // printCircleMarker(38.913, -77.035);
+  // printCircleMarker(38.921, -77.018);
+  // printCircleMarker(38.894, -77.038);
+  // printCircleMarker(38.91, -77.032);
+  // printCircleMarker(38.89, -76.98);
 
   function drawLocation(lat, lng, color) {
     var newCircle = L.circle([lat, lng], 1000, {
