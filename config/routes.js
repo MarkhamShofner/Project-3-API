@@ -14,9 +14,8 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var locationsController = require('../controllers/locationsController');
 var usersController = require('../controllers/usersController');
+var yelpController = require('../controllers/yelpController');
 var passport = require("passport");
-var Yelp = require("../models/yelp.js");
-
 
 router.route('/')
   .get(locationsController.index);
@@ -32,17 +31,7 @@ router.route('/login')
 router.route("/logout")
   .get(usersController.getLogout);
 
-router.get("/yelp", function(req, res) {
-  // See http://www.yelp.com/developers/documentation/v2/search_api
-  // potential search param coordinates: {latitude: 38.9008765, longitude: -77.01328745},
-  Yelp.search({
-      term: 'bar',
-      location: 'dc',
-      limit: 3
-    })
-    .then(function(data) {
-      res.json(data);
-    });
-});
+router.route("/yelp")
+  .get(yelpController.search);
 
 module.exports = router;

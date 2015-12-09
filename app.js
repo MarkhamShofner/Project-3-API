@@ -1,4 +1,3 @@
-
 var express = require("express");
 var app = express();
 var path = require("path");
@@ -19,7 +18,7 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());
 
-var Yelp = require("./models/yelp.js");
+// var Yelp = require("./models/yelp.js");
 // app.set("view engine", "hbs");
 
 app.set("view engine", "hbs");
@@ -36,19 +35,6 @@ app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
   next();
 });
-
-// app.get("/", function(req, res){
-//   res.render("index.html");
-// });
-
-// app.get("/yelp", function(req,res) {
-//   // See http://www.yelp.com/developers/documentation/v2/search_api
-//   // potential search param coordinates: {latitude: 38.9008765, longitude: -77.01328745},
-//   Yelp.search({ term: 'bar', location: 'dc', limit: 3 })
-//   .then(function (data) {
-//     res.json(data);
-//   });
-// });
 
 var routes = require('./config/routes');
 app.use(routes);
