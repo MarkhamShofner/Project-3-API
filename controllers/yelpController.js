@@ -4,7 +4,7 @@ var yelpController = {
   search: function (req, res) {
     Yelp.search({
       term: 'bar',
-      location: 'dc',
+      ll: "38.999, -79.011",
       limit: 3
     })
     .then(function(data) {
