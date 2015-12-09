@@ -16,6 +16,7 @@ $(document).ready(function() {
 		$.ajax({
 		  type: 'POST',
 		  dataType: 'json',
+      // TODO - make this link non-localable
 		  url: "http://localhost:3000/yelp",
 			data: frontParams,
 		}).done(function(response) {
