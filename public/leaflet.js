@@ -46,5 +46,16 @@ $(document).ready(function(){
 
   map.on('click', onMapClick);
 
+  map.on('moveend', function() {
+    e.preventDefault() // prevents a page refresh, which we don't want
+    var bounds = map.getBounds(); // grabs and stores the Leaflet map boundaries
+    location = new Location(bounds)     // creates a new location object using our Location constructor
+    forecast.loadLocation().then(function(){   // calls .loadLocation to make the API call
+      view = new LocationView(location) // in the promise we create a new view passing in the location object
+      view.clearContainer() // empties location if one already exists
+      view.render() // renders the new location
+    })
+  })
+
 
 });
