@@ -19,12 +19,11 @@ $(document).ready(function() {
     frontParams.term = $(".searchType").val();
 		console.log(frontParams);
 
-		
-
 		$.ajax({
 		  type: 'GET',
 		  dataType: 'json',
-		  url: "http://localhost:3000/yelp"
+		  url: "http://localhost:3000/yelp",
+			data: frontParams,
 		}).done(function(response) {
 		  console.log(response);
 		}).fail(function(response){
