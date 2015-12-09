@@ -41,13 +41,14 @@ app.use(function (req, res, next) {
 //   res.render("index.html");
 // });
 
-app.get("/yelp", function(req,res) {
-  // See http://www.yelp.com/developers/documentation/v2/search_api
-  Yelp.search({ term: 'bar', location: 'dc' })
-  .then(function (data) {
-    res.json(data);
-  });
-});
+// app.get("/yelp", function(req,res) {
+//   // See http://www.yelp.com/developers/documentation/v2/search_api
+//   // potential search param coordinates: {latitude: 38.9008765, longitude: -77.01328745},
+//   Yelp.search({ term: 'bar', location: 'dc', limit: 3 })
+//   .then(function (data) {
+//     res.json(data);
+//   });
+// });
 
 var routes = require('./config/routes');
 app.use(routes);
