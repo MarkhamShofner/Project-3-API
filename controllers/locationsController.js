@@ -1,6 +1,6 @@
 var locationsController = {
-  index: function(req,res){
-    res.render("locations/index");
+  index: function(req, res){
+  	res.render("index.hbs");
   }
 };
 
