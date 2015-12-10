@@ -64,10 +64,8 @@ $(document).ready(function(){
       distanceSum = distanceSum + distance;
     }
     distanceAvg = distanceSum / responseArray.length;
-    console.log("distance sum:");
-    console.log(distanceSum);
-    console.log("distanceAvg:");
-    console.log(distanceAvg);
+    $(".averagedistance").text(distanceAvg + " meters");
+    $(".totaldistance").text(distanceSum + " meters");
   }
 
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]

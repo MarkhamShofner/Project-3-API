@@ -24,6 +24,19 @@ path {
   z-index: 9999;
 }
 
+.distancemeasurements {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  height: 35%;
+  border: 25px rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  margin: 25px;
+  background-color: rgba(255, 255, 255, 0.98);
+  z-index: 9999;
+}
+
 #popup {
   display: none;
 }
