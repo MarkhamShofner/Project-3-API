@@ -19,3 +19,5 @@ Location.fetch = function(){
   });
   return request;
 };
+
+module.exports = Location;
