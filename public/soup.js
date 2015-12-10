@@ -15,7 +15,7 @@ $(document).ready(function(){
 
   var popup = L.popup();
 
-  printCircleMarker(38.91, -77.012);
+  // printCircleMarker(38.91, -77.012);
 
   function drawLocation(lat, lng, color) {
     var newCircle = L.circle([lat, lng], 1000, {
@@ -48,13 +48,38 @@ $(document).ready(function(){
      })
    });
 
+  //  $(".search").on("submit", function(e){
+  //    e.preventDefault();
+  //    var location = new Location()     // creates a new location object using our Location constructor
+  //    location.loadLocation().then(function(){   // calls .loadLocation to make the API call
+  //      var view = new LocationView(location) // in the promise we create a new view passing in the location object
+  //     //  view.clearSidebar() // empties sidebar if one already exists
+  //     //  view.renderSidebarView() // renders the new location
+  //      view.renderMarker()
+  //     })
+  //   });
+
+   //map.on('moveend', grabData());
+   //map.on('load', grabData());
+   //
+  //  function grabData() = {
+  //    e.preventDefault() // prevents a page refresh, which we don't want
+  //    var bounds = map.getBounds();
+  //    var long = $(".searchLong").val()
+  //    var lat = $(".searchLat").val()
+  //    var location = new Location({long: long, lat: lat})     // creates a new location object using our Location constructor
+  //    forecast.loadLocation().then(function(){   // calls .loadLocation to make the API call
+  //      view = new LocationView(location) // in the promise we create a new view passing in the location object
+  //      view.renderMarker()
+  //    })
+  //  })
+
    //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
    //[][][][][][][][][][][] Location model [][][][][][][][][][]
    //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][]
 
-   var Location = function(info){
-    this.lat = info.lat;
-    this.long = info.long;
+   var Location = function(){
+     //nada
    };
 
    Location.prototype.loadLocation = function(){
@@ -85,8 +110,8 @@ $(document).ready(function(){
        html.append("<h2>" + location.name + "</h2>");
        html.append("<p class='category'>Category: " + location.category + "</p>")
        html.append("<img class='business-photo' alt='Photograph of " + location.name + "' src='" + location.image_url + "'>");
-       html.append("<p class='category'>Latitude: " + location.lat + "</p>")
-       html.append("<p class='category'>Longitude: " + location.long + "</p>")
+       html.append("<p class='side-lat'>Latitude: " + location.lat + "</p>")
+       html.append("<p class='side-long'>Longitude: " + location.long + "</p>")
        return(html);
      },
      renderSidebarView: function(){
