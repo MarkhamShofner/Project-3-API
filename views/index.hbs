@@ -16,13 +16,19 @@
 
 </head>
 <body>
-  <div class="sidebar location">
 
-    {{#if currentUser}}<p><a href="/logout">Log Out</a></p>
-    {{else}}
-    <p><a href="/signup">Sign Up</a> / <a href="/login">Log In</a></p>
-    <p><button id="modal">Modal log in</button></p>
+  <div class="sidebar">
+    {{#if message}}
+      <div class="alert">{{message}}</div>
     {{/if}}
+
+    {{#if currentUser}}
+      <p><button id="logout" class="userauth"><a href="/logout">Log out</a></button></p>
+    {{else}}
+       <p><button id="openLogin" class="userauth">Log in</button></p>
+       <p><button id="openSignup" class="userauth">Sign up</button></p>
+    {{/if}}
+
     <form class="search">
       <input class="searchLatitude" type="text" name ="latitude" placeholder="Latitude">
       <input class="searchLongitude" type="text" name ="longitude" placeholder="Longitude">
@@ -32,8 +38,44 @@
     <button class="test">Test this</button>
   </div>
 
+  <div id="loginPopup" class="authPopup">
+    <form method="post" action="/login">
+      <div class="form-group">
+        <button class="close">x</button>
+        <h3>Log In:</h3>
+        <label for="email">Email</label>
+        <input class="form-control" type="text" name="email" id="email">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Password</label>
+        <input class="form-control" type="password" name="password" id="password">
+      </div>
+
+      <input class="submit" type="submit">
+    </form>
+  </div>
+
+  <div id="signupPopup" class="authPopup">
+      <button class="close">x</button>
+      <form method="post" action="/signup">
+        <div class="form-group">
+          <h3>Sign Up:</h3>
+          <label for="email">Email</label>
+          <input class="form-control" type="text" name="email" id="email">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Password</label>
+          <input class="form-control" type="password" name="password" id="password">
+        </div>
+
+        <input class="submit" type="submit">
+      </form>
+    </div>
 
   <div id="map">
   </div>
+  
 </body>
 </html>

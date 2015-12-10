@@ -10,6 +10,7 @@ var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var hbs = require("hbs");
 var locationsController = require("./controllers/locationsController");
+var seeds = require("./db/seeds");
 var env = require('./env');
 // TODO - ^comment out env requirement to deploy^, needs to be streamlined to allow local and external
 
@@ -32,6 +33,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

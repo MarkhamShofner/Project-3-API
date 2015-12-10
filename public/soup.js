@@ -6,6 +6,25 @@ $(document).ready(function(){
   //[][][][][][][][][][] Leaflet functions [][][][][][][][][][]
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
 
+    $('#openLogin').on('click', function(){
+      $("#signupPopup").hide();
+      $("#loginPopup").show();
+      $("#openLogin").addClass('selected');
+      $("#openSignup").removeClass('selected');
+    }); 
+
+    $('#openSignup').on('click', function(){
+      $("#loginPopup").hide();
+      $("#signupPopup").show();
+      $("#openSignup").addClass('selected');
+      $("#openLogin").removeClass('selected');
+    }); 
+
+    $('.close').on('click', function(e){
+      e.preventDefault();
+      $('.authPopup').hide();
+    });
+
   var map = L.map('map').setView([38.900, -76.999], 13);
   L.tileLayer('https://api.tiles.mapbox.com/v4/rebeccae.ob42lgga/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicmViZWNjYWUiLCJhIjoiY2locW50eDhwMDRxaXRnbTQ4NGZqM3F4ZiJ9.bdeGen8FhiVQqFbI7Vz0lA', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
