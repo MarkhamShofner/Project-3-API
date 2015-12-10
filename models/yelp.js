@@ -5,10 +5,10 @@ var Yelp = require('yelp');
 // test test
 
 var yelp = new Yelp({
-  consumer_key: process.env.consumer_key,
-  consumer_secret: process.env.consumer_secret,
-  token: process.env.token,
-  token_secret: process.env.token_secret,
+  consumer_key: process.env.yelp_consumer_key,
+  consumer_secret: process.env.yelp_consumer_secret,
+  token: process.env.yelp_token,
+  token_secret: process.env.yelp_token_secret
 });
 
 module.exports = yelp;

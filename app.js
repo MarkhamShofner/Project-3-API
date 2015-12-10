@@ -26,7 +26,7 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(session({ 
-	secret: process.env.passport.secret ,
+	secret: process.env.passport_secret,
 	resave: true,
 	saveUninitialized: true
 }));
