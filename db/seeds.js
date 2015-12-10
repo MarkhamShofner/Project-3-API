@@ -1,5 +1,5 @@
 //seeds.js
-var mongodbUri = 'mongodb://localhost/frequency';
+var mongodbUri = 'mongodb://localhost/location';
 var conn = mongoose.connect(process.env.MONGOLAB_URI || mongodbUri);
 
 require("./schema");
