@@ -14,8 +14,8 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var locationsController = require('../controllers/locationsController');
 var usersController = require('../controllers/usersController');
+var yelpController = require('../controllers/yelpController');
 var passport = require("passport");
-
 
 router.route('/')
   .get(locationsController.index);
@@ -29,6 +29,9 @@ router.route('/login')
   .post(usersController.postLogin)
 
 router.route("/logout")
-  .get(usersController.getLogout)
+  .get(usersController.getLogout);
+
+router.route("/yelp")
+  .post(yelpController.search);
 
 module.exports = router;
