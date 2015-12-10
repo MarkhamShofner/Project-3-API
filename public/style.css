@@ -70,6 +70,10 @@ button:hover {
   font-style: italic;
 }
 
+.alert {
+  color: red;
+  padding: 5px;
+}
 
 @media (max-width: 768px) {
   .sidebar {

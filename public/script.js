@@ -23,4 +23,14 @@ $(document).ready(function(){
 		$('.authPopup').hide();
     });
 
+
+    // $('.submit').on('click', function(err) {
+    // 	if (err) {
+    // 		console.log("FAIL");
+    // 		// $('.sidebar').append("Success");
+    // 	} else {
+    // 		console.log("success");
+    // 	}
+    // })
+
 });

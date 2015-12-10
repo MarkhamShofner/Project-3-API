@@ -21,17 +21,14 @@ router.route('/')
   .get(locationsController.index);
 
 router.route('/signup')
-  .get(usersController.getSignup)
+  // .get(usersController.getSignup)
   .post(usersController.postSignup)
 
 router.route('/login')
-  .get(usersController.getLogin)
+  // .get(usersController.getLogin)
   .post(usersController.postLogin)
 
 router.route("/logout")
   .get(usersController.getLogout)
-
-// router.route("/secret")
-//   .get(authenticatedUser, usersController.secret)
 
 module.exports = router;

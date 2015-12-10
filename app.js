@@ -12,6 +12,7 @@ var cookieParser = require('cookie-parser');
 var hbs   = require("hbs");
 var locationsController = require("./controllers/locationsController");
 var seeds = require("./db/seeds");
+var env = require('./env');
 
 // mongoose.connect('mongodb://localhost/local-authentication-with-passport');
 
@@ -25,7 +26,11 @@ var Yelp = require("./models/yelp.js");
 app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.use(session({ secret: 'project3-mapparty' }));
+app.use(session({ 
+	secret: env.passport.secret ,
+	resave: true,
+	saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

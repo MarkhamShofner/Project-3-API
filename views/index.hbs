@@ -18,6 +18,10 @@
   <body>
     <div class="sidebar">
 
+  {{#if message}}
+    <div class="alert">{{message}}</div>
+  {{/if}}
+
     {{#if currentUser}}
     <p><button id="logout" class="userauth"><a href="/logout">Log out</a></button></p>
     {{else}}
@@ -40,7 +44,7 @@
           <input class="form-control" type="password" name="password" id="password">
         </div>
 
-        <input class="btn btn-default" type="submit">
+        <input class="submit" type="submit">
       </form>
     </div>
 
@@ -59,7 +63,7 @@
           <input class="form-control" type="password" name="password" id="password">
         </div>
 
-        <input class="btn btn-default" type="submit">
+        <input class="submit" type="submit">
       </form>
     </div>
 
