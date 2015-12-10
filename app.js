@@ -11,7 +11,7 @@ var cookieParser = require('cookie-parser');
 var hbs   = require("hbs");
 var locationsController = require("./controllers/locationsController");
 var seeds = require("./db/seeds");
-var env = require('./env');
+// var env = require('./env');
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/local-authentication-with-passport')
 
