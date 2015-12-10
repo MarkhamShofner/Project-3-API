@@ -36,16 +36,16 @@ $(document).ready(function(){
 
   // printCircleMarker(38.91, -77.012);
 
-  function drawLocation(lat, lng, color) {
-    var newCircle = L.circle([lat, lng], 1000, {
+  function drawLocation(lat, lng, opac) {
+    var newCircle = L.circle([lat, lng], 300, {
       color: '#ffffff',
-      fillColor: color,
-      fillOpacity: 0.25,
+      fillColor: '#ff0000',
+      fillOpacity: opac,
     }).addTo(map);
   };
 
-  function printCircleMarker(lat, lng) {
-    var selectedColor = "#FF0000";
+  function printCircleMarker(lat, lng, rating) {
+    var selectedColor = rating / 10
     drawLocation(lat, lng, selectedColor);
     L.marker([lat, lng]).addTo(map);
   };
@@ -99,7 +99,12 @@ $(document).ready(function(){
     }).done(function(response) {
       console.log(response);
       for (var i = 0; i < response.businesses.length; i++) {
-        printCircleMarker(response.businesses[i].location.coordinate.latitude, response.businesses[i].location.coordinate.longitude);
+        var biz = response.businesses[i]
+        printCircleMarker(
+          biz.location.coordinate.latitude,
+          biz.location.coordinate.longitude,
+          biz.rating
+        );
       }
     }).fail(function(response){
       console.log("Ajax post request failed.");
