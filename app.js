@@ -45,6 +45,11 @@ app.use(function (req, res, next) {
 var routes = require('./config/routes');
 app.use(routes);
 
-app.listen(process.env.PORT || 3000, function(){
-  console.log("app listening at http://localhost:3000/");
+// app.listen(process.env.PORT || 3000, function(){
+//   console.log("app listening at http://localhost:3000/");
+// });
+
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
+console.log("Listening on " + port);
 });
