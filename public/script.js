@@ -16,7 +16,7 @@ $(document).ready(function() {
 		$.ajax({
 		  type: 'POST',
 		  dataType: 'json',
-      // TODO - make this link non-localable
+      // TODO - make this link non-localable (for deployment)
 		  url: "http://localhost:3000/yelp",
 			data: frontParams,
 		}).done(function(response) {
@@ -24,6 +24,7 @@ $(document).ready(function() {
 		}).fail(function(response){
 		  console.log("Ajax get request failed.");
 		});
+
 
   });
 

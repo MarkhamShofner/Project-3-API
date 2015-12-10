@@ -24,14 +24,14 @@ $(document).ready(function(){
       fillColor: color,
       fillOpacity: 0.25,
     }).addTo(map);
-  };
+  }
 
   function printCircleMarker(lat, lng) {
     var selectedColor = "#FF0000";
     drawLocation(lat, lng, selectedColor);
     L.marker([lat, lng]).addTo(map);
     // saveLocation(e.latlng.lat, e.latlng.lng, selectedColor);
-  };
+  }
 
   function saveLocation(e) {
     // post this to an API.
