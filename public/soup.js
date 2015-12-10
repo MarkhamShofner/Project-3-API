@@ -19,16 +19,22 @@ $(document).ready(function(){
 
   // printCircleMarker(38.91, -77.012);
 
-  function drawLocation(lat, lng, opac) {
+  function drawLocation(lat, lng, color) {
     var newCircle = L.circle([lat, lng], 300, {
       color: '#ffffff',
-      fillColor: '#ff0000',
-      fillOpacity: opac,
+      fillColor: color,
+      fillOpacity: 0.4,
     }).addTo(map);
   };
 
   function printCircleMarker(lat, lng, rating) {
-    var selectedColor = rating / 10
+    var selectedColor;
+    if (rating >= 4.6) { selectedColor = '#3498db'; }
+    else if (rating >= 4.1) { selectedColor = '#1abc9c'; }
+    else if (rating >= 3.6) { selectedColor = '#2ecc71'; }
+    else if (rating >= 3.1) { selectedColor = '#f1c40f'; }
+    else if (rating >= 2.6) { selectedColor = '#f39c12'; }
+    else { selectedColor = '#e74c3c'; }
     drawLocation(lat, lng, selectedColor);
     L.marker([lat, lng]).addTo(map);
   };
@@ -66,35 +72,9 @@ $(document).ready(function(){
   //    })
   //  }
 
-  // $('#passParams').on('click', function(e) {
-  //   e.preventDefault();
-  //   var frontParams = {};
-  //   frontParams.latitude = $(".searchLatitude").val();
-  //   frontParams.longitude = $(".searchLongitude").val();
-  //   frontParams.term = $(".searchType").val();
-  //   console.log(frontParams);
-  //   $.ajax({
-  //     type: 'POST',
-  //     dataType: 'json',
-  //     // TODO - make this link non-localable (for deployment)
-  //     url: "/yelp",
-  //     data: frontParams,
-  //   }).done(function(response) {
-  //     console.log(response);
-  //     for (var i = 0; i < response.businesses.length; i++) {
-  //       var biz = response.businesses[i]
-  //       printCircleMarker(
-  //         biz.location.coordinate.latitude,
-  //         biz.location.coordinate.longitude,
-  //         biz.rating
-  //       );
-  //     }
-  //   }).fail(function(response){
-  //     console.log("Ajax post request failed.");
-  //   });
-  // });
-
   map.on('moveend', function() {
+    $(".leaflet-marker-pane").empty();
+    // $(".leaflet-overlay-pane").empty();
     var frontParams = {};
     var bounds = map.getBounds();
     frontParams.sw_lat = bounds._southWest.lat;
