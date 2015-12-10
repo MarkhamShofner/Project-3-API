@@ -8,7 +8,7 @@ var yelpController = {
       term: req.body.term,
       // ll: "" + req.body.latitude + ", " + req.body.longitude + "",
       bounds: req.body.sw_lat + "," + req.body.sw_long + "|" + req.body.ne_lat + "," + req.body.ne_long,
-      limit: 10
+      limit: 20
     };
 
     console.log(params);

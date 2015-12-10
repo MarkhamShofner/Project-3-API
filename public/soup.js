@@ -20,7 +20,7 @@ $(document).ready(function(){
   // printCircleMarker(38.91, -77.012);
 
   function drawLocation(lat, lng, color) {
-    var newCircle = L.circle([lat, lng], 300, {
+    var newCircle = L.circle([lat, lng], 100, {
       color: '#ffffff',
       fillColor: color,
       fillOpacity: 0.4,
@@ -36,7 +36,7 @@ $(document).ready(function(){
     else if (rating >= 2.6) { selectedColor = '#f39c12'; }
     else { selectedColor = '#e74c3c'; }
     drawLocation(lat, lng, selectedColor);
-    L.marker([lat, lng]).addTo(map);
+    L.marker([lat, lng], { title: 'Bob' }).addTo(map).bindPopup();
   };
 
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
@@ -74,7 +74,8 @@ $(document).ready(function(){
 
   map.on('moveend', function() {
     $(".leaflet-marker-pane").empty();
-    // $(".leaflet-overlay-pane").empty();
+    $(".leaflet-shadow-pane").empty();
+    $("g").empty();
     var frontParams = {};
     var bounds = map.getBounds();
     frontParams.sw_lat = bounds._southWest.lat;
