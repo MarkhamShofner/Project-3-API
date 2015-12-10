@@ -47,5 +47,4 @@ module.exports = {
   // getSignup: getSignup,
   postSignup: postSignup,
   getLogout: getLogout,
-  secret: secret
 }
