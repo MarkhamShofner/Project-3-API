@@ -40,6 +40,7 @@ app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
   next();
 });
+// test
 
 var routes = require('./config/routes');
 app.use(routes);
