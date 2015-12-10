@@ -39,6 +39,37 @@ $(document).ready(function(){
     L.marker([lat, lng]).addTo(map);
   };
 
+  function measure(lat1, lon1, lat2, lon2){  // generally used geo measurement function
+    var R = 6378.137; // Radius of earth in KM
+    var dLat = (lat2 - lat1) * Math.PI / 180;
+    var dLon = (lon2 - lon1) * Math.PI / 180;
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    var d = R * c;
+    return d * 1000; // meters
+}
+
+  function distanceMeasurement(yelpResponse) {
+    var responseArray = yelpResponse.businesses;
+    var center = yelpResponse.region.center;
+    var centerLat = center.latitude;
+    var centerLong = center.longitude;
+    var distanceSum = 0;
+    for (var i = 0; i<responseArray.length; i++){
+      var bizLat = responseArray[i].location.coordinate.latitude;
+      var bizLong = responseArray[i].location.coordinate.longitude;
+      var distance = measure (bizLat, bizLong, centerLat, centerLong);
+      distanceSum = distanceSum + distance;
+    }
+    distanceAvg = distanceSum / responseArray.length;
+    console.log("distance sum:");
+    console.log(distanceSum);
+    console.log("distanceAvg:");
+    console.log(distanceAvg);
+  }
+
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
   //[][][][][][][][][][] Event listeners [][][][][][][][][][][]
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
@@ -99,6 +130,7 @@ $(document).ready(function(){
           biz.rating
         );
       }
+      distanceMeasurement(response);
     }).fail(function(response){
       console.log("Ajax post request failed.");
     });
