@@ -13,7 +13,7 @@ var locationsController = require("./controllers/locationsController");
 var seeds = require("./db/seeds");
 // var env = require('./env');
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/local-authentication-with-passport')
+mongoose.createConnection(process.env.MONGOLAB_URI || 'mongodb://localhost/local-authentication-with-passport')
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -45,11 +45,6 @@ app.use(function (req, res, next) {
 var routes = require('./config/routes');
 app.use(routes);
 
-// app.listen(process.env.PORT || 3000, function(){
-//   console.log("app listening at http://localhost:3000/");
-// });
-
-var port = process.env.PORT || 3000;
-app.listen(port, function() {
-console.log("Listening on " + port);
+app.listen(process.env.PORT || 3000, function(){
+  console.log("app listening at http://localhost:3000/");
 });
