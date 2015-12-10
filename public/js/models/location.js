@@ -5,15 +5,11 @@ var Location = function(info){
   this.long = info.long;
 };
 
-console.log(">>>>>>> RIGHT BEFORE loadLocation");
-
 Location.prototype.loadLocation = function(){
-
-  console.log(">>>>>>> RIGHT INSIDE loadLocation");
 
   var self = this
 
-  //  passes through a map bounds object, which will return this:
+  //  once we integrate bounds, will pass through a map bounds object, which will return this:
   //
   //  bounds.LatLngBounds
   //    _northEast: o.LatLng
@@ -31,6 +27,8 @@ Location.prototype.loadLocation = function(){
     self.name = response.businesses[0].name
     self.category = response.businesses[0].categories[0][0]
     self.image_url = response.businesses[0].image_url
+    self.lat = response.businesses[0].location.coordinate.latitude
+    self.long = response.businesses[0].location.coordinate.longitude
 
     // --- Eventually: Loop over responses and return an array of hashes? -----
     //   for (var i = 0; i < response.businesses.length; i++) {
@@ -43,5 +41,3 @@ Location.prototype.loadLocation = function(){
   return request
 
 }
-
-console.log(">>>>>>> RIGHT AFTER loadLocation");

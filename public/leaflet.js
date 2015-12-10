@@ -1,5 +1,7 @@
 console.log("leaflet.js is loaded");
 
+var addMarker;
+
 $(document).ready(function(){
 
   var map = L.map('map').setView([38.900, -76.999], 13);
@@ -12,12 +14,6 @@ $(document).ready(function(){
   var popup = L.popup();
 
   printCircleMarker(38.91, -77.012);
-  printCircleMarker(38.895, -77.023);
-  printCircleMarker(38.913, -77.035);
-  printCircleMarker(38.921, -77.018);
-  printCircleMarker(38.894, -77.038);
-  printCircleMarker(38.91, -77.032);
-  printCircleMarker(38.89, -76.98);
 
   function drawLocation(lat, lng, color) {
     var newCircle = L.circle([lat, lng], 1000, {
@@ -31,8 +27,11 @@ $(document).ready(function(){
     var selectedColor = "#FF0000";
     drawLocation(lat, lng, selectedColor);
     L.marker([lat, lng]).addTo(map);
-    // saveLocation(e.latlng.lat, e.latlng.lng, selectedColor);
   };
+
+  addMarker = function(lat, long){
+    L.marker([lat, long]).addTo(map);
+  }
 
   function saveLocation(e) {
     // post this to an API.
@@ -45,14 +44,12 @@ $(document).ready(function(){
         .openOn(map);
   }
 
-  // map.on('click', onMapClick);
-
   // map.on('moveend', function() {
   //   e.preventDefault() // prevents a page refresh, which we don't want
   //   // var bounds = map.getBounds(); // grabs and stores the Leaflet map boundaries
   //   var long = $(".searchLong").val()
   //   var lat = $(".searchLat").val()
-  //   location = new Location({long: long, lat: lat})     // creates a new location object using our Location constructor
+  //   var location = new Location({long: long, lat: lat})     // creates a new location object using our Location constructor
   //   forecast.loadLocation().then(function(){   // calls .loadLocation to make the API call
   //     view = new LocationView(location) // in the promise we create a new view passing in the location object
   //     view.clearContainer() // empties location if one already exists
@@ -65,7 +62,7 @@ $(document).ready(function(){
   //    // var bounds = map.getBounds(); // grabs and stores the Leaflet map boundaries
   //    var long = $(".searchLong").val()
   //    var lat = $(".searchLat").val()
-  //    location = new Location({long: long, lat: lat})     // creates a new location object using our Location constructor
+  //    var location = new Location({long: long, lat: lat})     // creates a new location object using our Location constructor
   //    location.loadLocation().then(function(){   // calls .loadLocation to make the API call
   //      view = new LocationView(location) // in the promise we create a new view passing in the location object
   //      view.clearContainer() // empties location if one already exists
@@ -75,7 +72,7 @@ $(document).ready(function(){
 
   //  $(".test").on("click", function(e){
   //    e.preventDefault();
-  //    location = new Location({long: "nothing", lat: "nothing"})     // creates a new location object using our Location constructor
+  //    var location = new Location({long: "nothing", lat: "nothing"})     // creates a new location object using our Location constructor
   //    location.loadLocation().then(function(){   // calls .loadLocation to make the API call
   //      view = new LocationView(location) // in the promise we create a new view passing in the location object
   //      view.clearContainer() // empties location if one already exists
