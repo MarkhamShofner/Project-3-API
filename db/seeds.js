@@ -2,8 +2,8 @@
 require("./schema");
 var mongoose = require("mongoose");
 
-var mongodbUri = 'mongodb://localhost/location';
-var conn = mongoose.connect(process.env.MONGOLAB_URI || mongodbUri);
+// var MONGOLAB_URI = 'mongodb://localhost/location';
+// var conn = mongoose.connect(process.env.MONGOLAB_URI || MONGOLAB_URI);
 
 
 //[][][][][][][][][]>>> Variable Declarations <<<[][][][][][][][][]//
