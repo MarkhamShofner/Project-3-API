@@ -10,10 +10,8 @@ var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var hbs = require("hbs");
 var locationsController = require("./controllers/locationsController");
-var seeds = require("./db/seeds");
 var env = require('./env');
 // TODO - ^comment out env requirement to deploy^, needs to be streamlined to allow local and external
-
 
 // if this is run locally, and errors are returned, comment out the following line.
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/local-authentication-with-passport');
