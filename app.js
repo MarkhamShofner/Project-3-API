@@ -26,7 +26,7 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(session({
-  secret: env.passport.secret,
+  secret: env.passport_secret,
     // the below is another heroku specific line of code
     // secret: process.env.passport_secret,
   resave: true,

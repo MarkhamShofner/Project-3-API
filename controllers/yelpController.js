@@ -8,7 +8,8 @@ var yelpController = {
       term: req.body.term,
       // ll: "38.999, -79.011",
       ll: "" + req.body.latitude + ", " + req.body.longitude + "",
-      limit: 3
+      // ll: "38.999, -79.011",
+      limit: 10
     };
     console.log(params);
     console.log(params.ll);

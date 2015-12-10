@@ -9,14 +9,14 @@
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
   <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="leaflet.js"></script>
+  <!-- <script src="leaflet.js"></script>
   <script src="script.js"></script>
-
-  <!-- <script src="js/models/location.js"></script> -->
+  <script src="js/models/location.js"></script> -->
+  <script src="soup.js"></script>
 
 </head>
 <body>
-  <div class="sidebar">
+  <div class="sidebar location">
 
     {{#if currentUser}}<p><a href="/logout">Log Out</a></p>
     {{else}}
@@ -29,6 +29,7 @@
       <input class="searchType" type="text" name ="type" placeholder="Category">
       <input id="passParams" type="submit" value="Get Locations">
     </form>
+    <button class="test">Test this</button>
   </div>
 
 
