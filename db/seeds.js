@@ -1,9 +1,10 @@
 //seeds.js
+require("./schema");
+var mongoose = require("mongoose");
+
 var mongodbUri = 'mongodb://localhost/location';
 var conn = mongoose.connect(process.env.MONGOLAB_URI || mongodbUri);
 
-require("./schema");
-var mongoose = require("mongoose");
 
 //[][][][][][][][][]>>> Variable Declarations <<<[][][][][][][][][]//
 
