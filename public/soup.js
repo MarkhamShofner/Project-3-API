@@ -1,5 +1,7 @@
 console.log("jQuery soup--the flavorful treat that's fun to eat!");
 
+// var bounds;
+
 $(document).ready(function(){
 
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
@@ -64,11 +66,41 @@ $(document).ready(function(){
   //    })
   //  }
 
-  $('#passParams').on('click', function(e) {
-    e.preventDefault();
+  // $('#passParams').on('click', function(e) {
+  //   e.preventDefault();
+  //   var frontParams = {};
+  //   frontParams.latitude = $(".searchLatitude").val();
+  //   frontParams.longitude = $(".searchLongitude").val();
+  //   frontParams.term = $(".searchType").val();
+  //   console.log(frontParams);
+  //   $.ajax({
+  //     type: 'POST',
+  //     dataType: 'json',
+  //     // TODO - make this link non-localable (for deployment)
+  //     url: "/yelp",
+  //     data: frontParams,
+  //   }).done(function(response) {
+  //     console.log(response);
+  //     for (var i = 0; i < response.businesses.length; i++) {
+  //       var biz = response.businesses[i]
+  //       printCircleMarker(
+  //         biz.location.coordinate.latitude,
+  //         biz.location.coordinate.longitude,
+  //         biz.rating
+  //       );
+  //     }
+  //   }).fail(function(response){
+  //     console.log("Ajax post request failed.");
+  //   });
+  // });
+
+  map.on('moveend', function() {
     var frontParams = {};
-    frontParams.latitude = $(".searchLatitude").val();
-    frontParams.longitude = $(".searchLongitude").val();
+    var bounds = map.getBounds();
+    frontParams.sw_lat = bounds._southWest.lat;
+    frontParams.sw_long = bounds._southWest.lng;
+    frontParams.ne_lat = bounds._northEast.lat;
+    frontParams.ne_long = bounds._northEast.lng;
     frontParams.term = $(".searchType").val();
     console.log(frontParams);
     $.ajax({
