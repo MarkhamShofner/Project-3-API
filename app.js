@@ -13,7 +13,7 @@ var locationsController = require("./controllers/locationsController");
 var seeds = require("./db/seeds");
 // var env = require('./env');
 
-// mongoose.connect('mongodb://localhost/local-authentication-with-passport');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/local-authentication-with-passport')
 
 app.use(morgan('dev'));
 app.use(cookieParser());
