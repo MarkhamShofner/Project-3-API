@@ -27,9 +27,9 @@ LocationView.prototype = {
     this.$el.empty()
   },
 
-  renderMarker: function(){
-    // L.marker([location.lat, location.lng]).addTo(map);
-    addMarker(location.lat, location.lng);
+  renderMarker: function(location){
+    var self = this;
+    printCircleMarker(this.location.lat, this.location.long);
   }
 
 }

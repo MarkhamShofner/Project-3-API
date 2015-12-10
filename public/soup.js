@@ -1,8 +1,10 @@
-console.log("\"Welcome to our delicious jQuery soup!\" --Chef Matt");
+console.log("Welcome to our delicious jQuery soup!");
 
 $(document).ready(function(){
 
-  // ---------- Leaflet functions ----------
+  //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
+  //[][][][][][][][][][] Leaflet functions [][][][][][][][][][]
+  //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
 
   var map = L.map('map').setView([38.900, -76.999], 13);
   L.tileLayer('https://api.tiles.mapbox.com/v4/rebeccae.ob42lgga/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicmViZWNjYWUiLCJhIjoiY2locW50eDhwMDRxaXRnbTQ4NGZqM3F4ZiJ9.bdeGen8FhiVQqFbI7Vz0lA', {
@@ -29,7 +31,9 @@ $(document).ready(function(){
     L.marker([lat, lng]).addTo(map);
   };
 
-  // ---------- Event listeners ----------
+  //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
+  //[][][][][][][][][][] Event listeners [][][][][][][][][][][]
+  //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
 
   $('#modal').on('click', function(e){ e.preventDefault(); });
 
@@ -44,11 +48,13 @@ $(document).ready(function(){
      })
    });
 
-   // ---------- Location model ----------
+   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
+   //[][][][][][][][][][][] Location model [][][][][][][][][][]
+   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][]
 
    var Location = function(info){
-     this.lat = info.lat;
-     this.long = info.long;
+    this.lat = info.lat;
+    this.long = info.long;
    };
 
    Location.prototype.loadLocation = function(){
@@ -64,7 +70,9 @@ $(document).ready(function(){
      return request
    }
 
-   // ---------- Location view ----------
+   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
+   //[][][][][][][][][][][] Location view [][][][][][][][][][]
+   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][]
 
    var LocationView = function(location){
      this.location = location;
@@ -86,8 +94,9 @@ $(document).ready(function(){
        self.$el.html(self.locationTemplate(self.location).html());
      },
      clearSidebar: function(){ this.$el.empty() },
-     renderMarker: function(){
-       printCircleMarker(location.lat, location.lng)
+     renderMarker: function(location){
+       var self = this;
+       printCircleMarker(this.location.lat, this.location.long);
      }
    }
 
