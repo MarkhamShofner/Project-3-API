@@ -11,7 +11,7 @@ var cookieParser = require('cookie-parser');
 var hbs   = require("hbs");
 var locationsController = require("./controllers/locationsController");
 var seeds = require("./db/seeds");
-// var env = require('./env');
+var env = require('./env');
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/local-authentication-with-passport')
 
@@ -26,7 +26,7 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(session({ 
-	secret: process.env.passport_secret,
+	secret: process.env.passport_secret || env.passport_secret,
 	resave: true,
 	saveUninitialized: true
 }));
