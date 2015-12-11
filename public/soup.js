@@ -1,6 +1,4 @@
-console.log("jQuery soup--the flavorful treat that's fun to eat!");
-
-// var bounds;
+console.log("soup.js loaded");
 
 $(document).ready(function(){
 
@@ -17,8 +15,6 @@ $(document).ready(function(){
 
   var popup = L.popup();
 
-  // printCircleMarker(38.91, -77.012);
-
   function drawLocation(lat, lng, color) {
     var newCircle = L.circle([lat, lng], 100, {
       color: '#ffffff',
@@ -27,16 +23,34 @@ $(document).ready(function(){
     }).addTo(map);
   };
 
-  function printCircleMarker(lat, lng, rating) {
+  function printCircleMarker(b) {
     var selectedColor;
-    if (rating >= 4.6) { selectedColor = '#3498db'; }
-    else if (rating >= 4.1) { selectedColor = '#1abc9c'; }
-    else if (rating >= 3.6) { selectedColor = '#2ecc71'; }
-    else if (rating >= 3.1) { selectedColor = '#f1c40f'; }
-    else if (rating >= 2.6) { selectedColor = '#f39c12'; }
+    var lat = b.location.coordinate.latitude
+    var lng = b.location.coordinate.longitude
+    if (b.rating >= 4.6) { selectedColor = '#3498db'; }
+    else if (b.rating >= 4.1) { selectedColor = '#1abc9c'; }
+    else if (b.rating >= 3.6) { selectedColor = '#2ecc71'; }
+    else if (b.rating >= 3.1) { selectedColor = '#f1c40f'; }
+    else if (b.rating >= 2.6) { selectedColor = '#f39c12'; }
     else { selectedColor = '#e74c3c'; }
     drawLocation(lat, lng, selectedColor);
-    L.marker([lat, lng], { title: 'Bob' }).addTo(map).bindPopup();
+    L.marker([lat, lng], { title: 'Whatever' }).addTo(map).bindPopup(printPopup(b));
+  };
+
+  function printPopup(b) {
+    return "<div class='location-popup'>" +
+    "<h2>" + b.name + "</h2>" +
+    "<p class='category'>Category: " + b.categories[0][0] + "</p>" +
+    "<img class='business-photo' alt='Photograph of " + b.name + "' src='" + b.image_url + "'>" +
+    "<p class='side-lat'>Latitude: " + b.location.coordinate.latitude + "</p>" +
+    "<p class='side-long'>Longitude: " + b.location.coordinate.longitude + "</p>" +
+    "</div>";
+  }
+
+  function determineIcon(categories) {
+    if (categories[0][0]||categories[0][1] == 'Nightlife') {
+      return '<img class="inv" alt="Nightlife" src="http://i.imgur.com/JnxIO7y.png" />'
+    }
   };
 
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
@@ -93,12 +107,8 @@ $(document).ready(function(){
     }).done(function(response) {
       console.log(response);
       for (var i = 0; i < response.businesses.length; i++) {
-        var biz = response.businesses[i]
-        printCircleMarker(
-          biz.location.coordinate.latitude,
-          biz.location.coordinate.longitude,
-          biz.rating
-        );
+        var business = response.businesses[i]
+        printCircleMarker(business);
       }
     }).fail(function(response){
       console.log("Ajax post request failed.");
@@ -125,36 +135,6 @@ $(document).ready(function(){
        self.long = response.businesses[0].location.coordinate.longitude
      }).fail(function(response){ console.log("Failed to load JSON."); });
      return request
-   }
-
-   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
-   //[][][][][][][][][][][] Location view [][][][][][][][][][]
-   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][]
-
-   var LocationView = function(location){
-     this.location = location;
-     this.$el = $(".location");
-   }
-
-   LocationView.prototype = {
-     locationTemplate: function(location){
-       var html = $("<div></div>");
-       html.append("<h2>" + location.name + "</h2>");
-       html.append("<p class='category'>Category: " + location.category + "</p>")
-       html.append("<img class='business-photo' alt='Photograph of " + location.name + "' src='" + location.image_url + "'>");
-       html.append("<p class='side-lat'>Latitude: " + location.lat + "</p>")
-       html.append("<p class='side-long'>Longitude: " + location.long + "</p>")
-       return(html);
-     },
-     renderSidebarView: function(){
-       var self = this;
-       self.$el.html(self.locationTemplate(self.location).html());
-     },
-     clearSidebar: function(){ this.$el.empty() },
-     renderMarker: function(location){
-       var self = this;
-       printCircleMarker(this.location.lat, this.location.long);
-     }
    }
 
 });
