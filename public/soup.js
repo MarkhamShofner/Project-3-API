@@ -3,6 +3,14 @@ console.log("soup.js loaded");
 $(document).ready(function(){
 
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
+  //[][][][][][][][][][][][] Overlay [][][][][][][][][][][][][]
+  //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
+
+  window.setTimeout(function(){
+       $(".overlay").fadeOut("7000", function(){});
+   }, 3000);
+
+  //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
   //[][][][][][][][][][] Leaflet functions [][][][][][][][][][]
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
 
@@ -13,13 +21,20 @@ $(document).ready(function(){
       accessToken: "pk.eyJ1IjoicmViZWNjYWUiLCJhIjoiY2locW50eDhwMDRxaXRnbTQ4NGZqM3F4ZiJ9.bdeGen8FhiVQqFbI7Vz0lA"
   }).addTo(map);
 
+  map.locate({ setView: true, enableHighAccuracy: true, watch: true }).on('locationfound', function(e){
+    console.log( "Location detected. Lat: " + e.latitude + ", Long: " + e.longitude );
+    map.panTo([e.latitude, e.longitude], {animate: true, duration: 5.0});
+  }).on('locationerror', function(e){
+    console.log("Location not detected.");
+  });
+
   var popup = L.popup();
 
   function drawLocation(lat, lng, color) {
-    var newCircle = L.circle([lat, lng], 100, {
+    var newCircle = L.circle([lat, lng], 60, {
       color: '#ffffff',
       fillColor: color,
-      fillOpacity: 0.4,
+      fillOpacity: 0.2,
     }).addTo(map);
   };
 
@@ -39,19 +54,18 @@ $(document).ready(function(){
 
   function printPopup(b) {
     return "<div class='location-popup'>" +
-    "<h2>" + b.name + "</h2>" +
-    "<p class='category'>Category: " + b.categories[0][0] + "</p>" +
+    "<a href='" + b.url + "'><h1 class='biz-name'>" + b.name + "</h1></a>" +
+    "<h3 class='biz-category'>" + b.categories[0][0] + "</h2>" +
+    "<p class='biz-address'>" + b.location.address + ", " + b.location.city + ", " + b.location.state_code + "</p>" +
     "<img class='business-photo' alt='Photograph of " + b.name + "' src='" + b.image_url + "'>" +
-    "<p class='side-lat'>Latitude: " + b.location.coordinate.latitude + "</p>" +
-    "<p class='side-long'>Longitude: " + b.location.coordinate.longitude + "</p>" +
     "</div>";
   }
 
-  function determineIcon(categories) {
-    if (categories[0][0]||categories[0][1] == 'Nightlife') {
-      return '<img class="inv" alt="Nightlife" src="http://i.imgur.com/JnxIO7y.png" />'
-    }
-  };
+  // function determineIcon(categories) {
+  //   if (categories[0][0]||categories[0][1] == 'Nightlife') {
+  //     return '<img class="inv" alt="Nightlife" src="http://i.imgur.com/JnxIO7y.png" />'
+  //   }
+  // };
 
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
   //[][][][][][][][][][] Event listeners [][][][][][][][][][][]
@@ -59,32 +73,9 @@ $(document).ready(function(){
 
   $('#modal').on('click', function(e){ e.preventDefault(); });
 
-  $(".test").on("click", function(e){
-    e.preventDefault();
-    var location = new Location({lat: 34, long: 34})     // creates a new location object using our Location constructor
-    location.loadLocation().then(function(){   // calls .loadLocation to make the API call
-      var view = new LocationView(location) // in the promise we create a new view passing in the location object
-      view.clearSidebar() // empties sidebar if one already exists
-      view.renderSidebarView() // renders the new location
-      view.renderMarker()
-     })
-   });
-
-  //  $(".test").on("click", function(){ grabData(event, 'click') });
-  // //  $(".search").on('submit', grabData(e, 'search'));
-  // //  map.on('moveend', grabData(e, 'moveend'));
-  // //  map.on('load', grabData(e, 'load'));
-  //
-  //  function grabData(e, action) {
-  //    e.preventDefault() // prevents a page refresh, which we don't want
-  //    var location = new Location(action)     // creates a new location object using our Location constructor
-  //    location.loadLocation().then(function(){   // calls .loadLocation to make the API call
-  //      view = new LocationView(location) // in the promise we create a new view passing in the location object
-  //      view.clearSidebar() // empties sidebar if one already exists
-  //      view.renderSidebarView() // renders the new location
-  //      view.renderMarker()
-  //    })
-  //  }
+  map.on('load', function(){
+    setTimeout(map.zoomIn(1), 1000);
+  });
 
   map.on('moveend', function() {
     $(".leaflet-marker-pane").empty();
@@ -114,27 +105,5 @@ $(document).ready(function(){
       console.log("Ajax post request failed.");
     });
   });
-
-   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
-   //[][][][][][][][][][][] Location model [][][][][][][][][][]
-   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][]
-
-   var Location = function(a){
-     var action = a
-     console.log("Location instantiated of type " + a);
-   };
-
-   Location.prototype.loadLocation = function(){
-     var self = this
-     var url = "/yelp"
-     var request = $.getJSON(url).then(function(response){
-       self.name = response.businesses[0].name
-       self.category = response.businesses[0].categories[0][0]
-       self.image_url = response.businesses[0].image_url
-       self.lat = response.businesses[0].location.coordinate.latitude
-       self.long = response.businesses[0].location.coordinate.longitude
-     }).fail(function(response){ console.log("Failed to load JSON."); });
-     return request
-   }
 
 });
