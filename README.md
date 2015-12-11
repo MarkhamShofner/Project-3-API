@@ -3,7 +3,7 @@
 
 Welcome to the **hottest new app** for checking out maps: **heatmapr**.
 
-![heatmapr screenshot](http://i.imgur.com/YiGnp3n.png )
+![heatmapr screenshot](http://i.imgur.com/Cx8ybLH.png)
 
 **Key Features:**
 * **Loads OpenStreetMap data** using Leaflet.js and Mapbox
