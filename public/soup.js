@@ -21,7 +21,7 @@ $(document).ready(function(){
       accessToken: "pk.eyJ1IjoicmViZWNjYWUiLCJhIjoiY2locW50eDhwMDRxaXRnbTQ4NGZqM3F4ZiJ9.bdeGen8FhiVQqFbI7Vz0lA"
   }).addTo(map);
 
-  map.locate({ setView: true, enableHighAccuracy: true, watch: true }).on('locationfound', function(e){
+  map.locate({ setView: true, enableHighAccuracy: true }).on('locationfound', function(e){
     console.log( "Location detected. Lat: " + e.latitude + ", Long: " + e.longitude );
     map.panTo([e.latitude, e.longitude], {animate: true, duration: 5.0});
   }).on('locationerror', function(e){
@@ -49,7 +49,10 @@ $(document).ready(function(){
     else if (b.rating >= 2.6) { selectedColor = '#f39c12'; }
     else { selectedColor = '#e74c3c'; }
     drawLocation(lat, lng, selectedColor);
-    L.marker([lat, lng], { title: 'Whatever' }).addTo(map).bindPopup(printPopup(b));
+    L.marker([lat, lng], { title: 'Whatever' })
+      .addTo(map).bindPopup(printPopup(b))
+      .on('mouseover',function(e){this.openPopup();}
+    );
   };
 
   function printPopup(b) {
