@@ -15,11 +15,11 @@ var LocationSchema = new Schema({
   score: Number
 });
 
-var User = new Schema({
-	favorites: {[
-		
-	]}
-})
+// var User = new Schema({
+// 	favorites: {[
+// 		bizid: String	
+// 	]}
+// })
 
 // setting models in mongoose utilizing schemas defined above, we'll be using
 // these frequently throughout our app

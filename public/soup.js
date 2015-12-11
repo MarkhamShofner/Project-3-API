@@ -74,16 +74,20 @@ $(document).ready(function(){
     );
   }
 
+
+var star = '\u2606';
+
   function printPopup(b) {
     return "<div class='location-popup'>" +
     "<a href='" + b.url + "'><h1 class='biz-name'>" + b.name + "</h1></a>" +
     "<h3 class='biz-category'>" + b.categories[0][0] + "</h2>" +
     "<p class='biz-address'>" + b.location.address + ", " + b.location.city + ", " + b.location.state_code + "</p>" +
-    "<img class='business-photo' alt='Photograph of " + b.name + "' src='" + b.image_url + "'> <span id='bizid'>" + b.id +
+    "<img class='business-photo' alt='Photograph of " + b.name + "' src='" + b.image_url + "'> <span class='star'>" + star +
     "</span></div>";
   }
 
-  $('.bizid').on('click', function(){
+  $('.star').on('click', function(){
+    star = '\u2605';
     console.log("favorite");
   }); 
 
