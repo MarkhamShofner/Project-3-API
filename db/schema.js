@@ -15,6 +15,12 @@ var LocationSchema = new Schema({
   score: Number
 });
 
+var User = new Schema({
+	favorites: {[
+		
+	]}
+})
+
 // setting models in mongoose utilizing schemas defined above, we'll be using
 // these frequently throughout our app
 mongoose.model("Location", LocationSchema);
