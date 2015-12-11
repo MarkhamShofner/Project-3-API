@@ -18,7 +18,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	font-family: Helvetica, sans-serif;
 	vertical-align: middle;
 }
 
@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6, {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font: inherit;
+	font-family: Helvetica, sans-serif;
 	vertical-align: middle;
 }
 
@@ -67,11 +67,11 @@ path {
 .top-bar {
   height: 50px;
   z-index: 8001;
-  background-color: #fff;
   position: absolute;
   top: 0;
   left: 45px;
 	padding: 15px;
+	width: 90%;
 }
 
 .top-bar .logo {
@@ -106,10 +106,32 @@ path {
   padding: 10px;
   background: rgba(255,255,255,0.5);
   margin: 0 20px;
+	width: 100px;
+}
+
+.auth {
+	float: right;
+  border: 5px solid white;
+  -webkit-box-shadow:
+  inset 0 0 8px  rgba(0,0,0,0.1),
+        0 0 16px rgba(0,0,0,0.1);
+  -moz-box-shadow:
+  inset 0 0 8px  rgba(0,0,0,0.1),
+        0 0 16px rgba(0,0,0,0.1);
+  box-shadow:
+  inset 0 0 8px  rgba(0,0,0,0.1),
+        0 0 16px rgba(0,0,0,0.1);
+  padding: 10px;
+  background: rgba(255,255,255,0.5);
+  margin: 0 20px;
 }
 
 .authPopup {
   display: none;
+	background: #fff;
+	margin: 0 auto;
+	padding: 15px;
+	text-align: left;
 }
 
 .close {
@@ -155,10 +177,23 @@ path {
 }
 
 .user-action-overlay {
+	text-align: center;
   position: absolute;
   top: 50px;
   margin: 0 auto;
   z-index: 9001;
+}
+
+.logotext {
+	background: linear-gradient(
+    135deg,
+    rgba(255, 33, 81, 0.9),
+    rgba(255, 119, 41, 0.9)
+    );
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
 }
 
 /*

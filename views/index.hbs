@@ -72,7 +72,7 @@
   <div class="top-bar">
 
     <div class="logo">
-      <h1>heatmapr</h1>
+      <h1 class="logotext">heatmapr</h1>
     </div>
 
     <form class="search">
@@ -87,16 +87,10 @@
     </div>
 
     {{#if currentUser}}
-     <p>
        <button id="logout" class="auth"><a href="/logout">Log out</a></button>
-     </p>
      {{else}}
-     <p>
        <button id="openLogin" class="auth">Log in</button>
-     </p>
-     <p>
        <button id="openSignup" class="auth">Sign up</button>
-     </p>
      {{/if}}
 
   </div>
