@@ -36,12 +36,12 @@ $(document).ready(function(){
       fillColor: color,
       fillOpacity: 0.2,
     }).addTo(map);
-  };
+  }
 
   function printCircleMarker(b) {
     var selectedColor;
-    var lat = b.location.coordinate.latitude
-    var lng = b.location.coordinate.longitude
+    var lat = b.location.coordinate.latitude;
+    var lng = b.location.coordinate.longitude;
     if (b.rating >= 4.6) { selectedColor = '#3498db'; }
     else if (b.rating >= 4.1) { selectedColor = '#1abc9c'; }
     else if (b.rating >= 3.6) { selectedColor = '#2ecc71'; }
@@ -53,7 +53,7 @@ $(document).ready(function(){
       .addTo(map).bindPopup(printPopup(b))
       .on('mouseover',function(e){this.openPopup();}
     );
-  };
+  }
 
   function printPopup(b) {
     return "<div class='location-popup'>" +
@@ -69,6 +69,34 @@ $(document).ready(function(){
   //     return '<img class="inv" alt="Nightlife" src="http://i.imgur.com/JnxIO7y.png" />'
   //   }
   // };
+  function measure(lat1, lon1, lat2, lon2){  // generally used geo measurement function
+    var R = 6378.137; // Radius of earth in KM
+    var dLat = (lat2 - lat1) * Math.PI / 180;
+    var dLon = (lon2 - lon1) * Math.PI / 180;
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    var d = R * c;
+    return d * 1000; // meters
+}
+
+  function distanceMeasurement(yelpResponse) {
+    var responseArray = yelpResponse.businesses;
+    var center = yelpResponse.region.center;
+    var centerLat = center.latitude;
+    var centerLong = center.longitude;
+    var distanceSum = 0;
+    for (var i = 0; i<responseArray.length; i++){
+      var bizLat = responseArray[i].location.coordinate.latitude;
+      var bizLong = responseArray[i].location.coordinate.longitude;
+      var distance = measure (bizLat, bizLong, centerLat, centerLong);
+      distanceSum = distanceSum + distance;
+    }
+    distanceAvg = distanceSum / responseArray.length;
+    $(".averagedistance").text(distanceAvg + " meters");
+    $(".totaldistance").text(distanceSum + " meters");
+  }
 
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
   //[][][][][][][][][][] Event listeners [][][][][][][][][][][]
@@ -91,15 +119,15 @@ $(document).ready(function(){
     $.ajax({
       type: 'POST',
       dataType: 'json',
-      // TODO - make this link non-localable (for deployment)
       url: "/yelp",
       data: frontParams,
     }).done(function(response) {
       console.log(response);
       for (var i = 0; i < response.businesses.length; i++) {
-        var business = response.businesses[i]
+        var business = response.businesses[i];
         printCircleMarker(business);
       }
+      distanceMeasurement(response);
     }).fail(function(response){
       console.log("Ajax post request failed.");
     });
