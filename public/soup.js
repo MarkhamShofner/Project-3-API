@@ -10,28 +10,33 @@ $(document).ready(function(){
        $(".overlay").fadeOut("7000", function(){});
    }, 3000);
 
+   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
+   //[][][][][][][][][][][][] User auth [][][][][][][][][][][][]
+   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
+
+   $('#openLogin').on('click', function(){
+     $("#signupPopup").hide();
+     $("#loginPopup").show();
+     $("#openLogin").addClass('selected');
+     $("#openSignup").removeClass('selected');
+   });
+
+   $('#openSignup').on('click', function(){
+     $("#loginPopup").hide();
+     $("#signupPopup").show();
+     $("#openSignup").addClass('selected');
+     $("#openLogin").removeClass('selected');
+   });
+
+   $('.close').on('click', function(e){
+     e.preventDefault();
+     $(".homebtn").removeClass('selected');
+     $('.authPopup').hide();
+   });
+
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
   //[][][][][][][][][][] Leaflet functions [][][][][][][][][][]
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
-
-    $('#openLogin').on('click', function(){
-      $("#signupPopup").hide();
-      $("#loginPopup").show();
-      $("#openLogin").addClass('selected');
-      $("#openSignup").removeClass('selected');
-    }); 
-
-    $('#openSignup').on('click', function(){
-      $("#loginPopup").hide();
-      $("#signupPopup").show();
-      $("#openSignup").addClass('selected');
-      $("#openLogin").removeClass('selected');
-    }); 
-
-    $('.close').on('click', function(e){
-      e.preventDefault();
-      $('.authPopup').hide();
-    });
 
   var map = L.map('map').setView([38.900, -76.999], 13);
   L.tileLayer('https://api.tiles.mapbox.com/v4/rebeccae.ob42lgga/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicmViZWNjYWUiLCJhIjoiY2locW50eDhwMDRxaXRnbTQ4NGZqM3F4ZiJ9.bdeGen8FhiVQqFbI7Vz0lA', {
@@ -55,12 +60,12 @@ $(document).ready(function(){
       fillColor: color,
       fillOpacity: 0.2,
     }).addTo(map);
-  }
+  };
 
   function printCircleMarker(b) {
     var selectedColor;
-    var lat = b.location.coordinate.latitude;
-    var lng = b.location.coordinate.longitude;
+    var lat = b.location.coordinate.latitude
+    var lng = b.location.coordinate.longitude
     if (b.rating >= 4.6) { selectedColor = '#3498db'; }
     else if (b.rating >= 4.1) { selectedColor = '#1abc9c'; }
     else if (b.rating >= 3.6) { selectedColor = '#2ecc71'; }
@@ -72,7 +77,7 @@ $(document).ready(function(){
       .addTo(map).bindPopup(printPopup(b))
       .on('mouseover',function(e){this.openPopup();}
     );
-  }
+  };
 
   function printPopup(b) {
     return "<div class='location-popup'>" +
@@ -83,39 +88,36 @@ $(document).ready(function(){
     "</div>";
   }
 
-  // function determineIcon(categories) {
-  //   if (categories[0][0]||categories[0][1] == 'Nightlife') {
-  //     return '<img class="inv" alt="Nightlife" src="http://i.imgur.com/JnxIO7y.png" />'
-  //   }
-  // };
   function measure(lat1, lon1, lat2, lon2){  // generally used geo measurement function
-    var R = 6378.137; // Radius of earth in KM
-    var dLat = (lat2 - lat1) * Math.PI / 180;
-    var dLon = (lon2 - lon1) * Math.PI / 180;
-    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-    Math.sin(dLon/2) * Math.sin(dLon/2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    var d = R * c;
-    return d * 1000; // meters
-}
-
-  function distanceMeasurement(yelpResponse) {
-    var responseArray = yelpResponse.businesses;
-    var center = yelpResponse.region.center;
-    var centerLat = center.latitude;
-    var centerLong = center.longitude;
-    var distanceSum = 0;
-    for (var i = 0; i<responseArray.length; i++){
-      var bizLat = responseArray[i].location.coordinate.latitude;
-      var bizLong = responseArray[i].location.coordinate.longitude;
-      var distance = measure (bizLat, bizLong, centerLat, centerLong);
-      distanceSum = distanceSum + distance;
-    }
-    distanceAvg = distanceSum / responseArray.length;
-    $(".averagedistance").text(distanceAvg + " meters");
-    $(".totaldistance").text(distanceSum + " meters");
+      var R = 6378.137; // Radius of earth in KM
+      var dLat = (lat2 - lat1) * Math.PI / 180;
+      var dLon = (lon2 - lon1) * Math.PI / 180;
+      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLon/2) * Math.sin(dLon/2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      var d = R * c;
+      return d * 1000; // meters
   }
+
+    function distanceMeasurement(yelpResponse) {
+      var responseArray = yelpResponse.businesses;
+      var center = yelpResponse.region.center;
+      var centerLat = center.latitude;
+      var centerLong = center.longitude;
+      var distanceSum = 0;
+      for (var i = 0; i<responseArray.length; i++){
+        var bizLat = responseArray[i].location.coordinate.latitude;
+        var bizLong = responseArray[i].location.coordinate.longitude;
+        var distance = measure (bizLat, bizLong, centerLat, centerLong);
+        distanceSum = distanceSum + distance;
+      }
+      distanceAvg = distanceSum / responseArray.length;
+      // distanceSum = Math.round(distanceSum);
+      distanceAvg = Math.round(distanceAvg);
+      $(".averagedistance").text(distanceAvg + " meters");
+      // $(".totaldistance").text(distanceSum + " meters");
+    }
 
   //[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][]
   //[][][][][][][][][][] Event listeners [][][][][][][][][][][]
@@ -138,12 +140,13 @@ $(document).ready(function(){
     $.ajax({
       type: 'POST',
       dataType: 'json',
+      // TODO - make this link non-localable (for deployment)
       url: "/yelp",
       data: frontParams,
     }).done(function(response) {
       console.log(response);
       for (var i = 0; i < response.businesses.length; i++) {
-        var business = response.businesses[i];
+        var business = response.businesses[i]
         printCircleMarker(business);
       }
       distanceMeasurement(response);

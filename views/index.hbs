@@ -2,12 +2,12 @@
 <html>
 
 <head>
-  <title>Location Score</title>
+  <title>heatmapr</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.css' rel='stylesheet' />
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
   <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <!-- <script src="leaflet.js"></script>
@@ -21,74 +21,88 @@
 
 
   <div class="overlay">
-    <h1>hotmapr</h1>
+    <h1>heatmapr</h1>
   </div>
-  <div class="sidebar location">
 
-    {{#if message}}
-    <div class="alert">{{message}}</div>
-    {{/if}} {{#if currentUser}}
-    <p>
-      <button id="logout" class="userauth"><a href="/logout">Log out</a></button>
-    </p>
-    {{else}}
-    <p>
-      <button id="openLogin" class="userauth">Log in</button>
-    </p>
-    <p>
-      <button id="openSignup" class="userauth">Sign up</button>
-    </p>
-    {{/if}}
+  <div class="user-action-overlay">
+
+      {{#if message}}
+      <div class="alert">{{message}}</div>
+      {{/if}}
+
+      <div id="loginPopup" class="authPopup">
+        <form method="post" action="/login">
+          <div class="form-group">
+            <button class="close">x</button>
+            <h3>Log In:</h3>
+            <label for="email">Email</label>
+            <input class="form-control" type="text" name="email" id="email">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Password</label>
+            <input class="form-control" type="password" name="password" id="password">
+          </div>
+
+          <input class="submit" type="submit">
+        </form>
+      </div>
+
+      <div id="signupPopup" class="authPopup">
+        <button class="close">x</button>
+        <form method="post" action="/signup">
+          <div class="form-group">
+            <h3>Sign Up:</h3>
+            <label for="email">Email</label>
+            <input class="form-control" type="text" name="email" id="email">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Password</label>
+            <input class="form-control" type="password" name="password" id="password">
+          </div>
+
+          <input class="submit" type="submit">
+        </form>
+      </div>
+
+  </div>
+
+  <div class="top-bar">
+
+    <div class="logo">
+      <h1>heatmapr</h1>
+    </div>
 
     <form class="search">
       <input class="searchType" type="text" name="type" value="bars">
     </form>
-    <!-- <button class="test">Test this</button> -->
-  </div>
-  <div class="distancemeasurements">
-    <p>Average Distance:</p>
-    <p class="averagedistance"></p>
-    <p>Total Distance:</p>
-    <p class="totaldistance"></p>
-  </div>
 
+    <div class="distancemeasurements">
+      <p>Average distance:</p>
+      <p class="averagedistance"></p>
+      <!-- <p>Total Distance:</p>
+      <p class="totaldistance"></p> -->
+    </div>
 
-  <div id="loginPopup" class="authPopup">
-    <form method="post" action="/login">
-      <div class="form-group">
-        <button class="close">x</button>
-        <h3>Log In:</h3>
-        <label for="email">Email</label>
-        <input class="form-control" type="text" name="email" id="email">
-      </div>
+    {{#if currentUser}}
+     <p>
+       <button id="logout" class="auth"><a href="/logout">Log out</a></button>
+     </p>
+     {{else}}
+     <p>
+       <button id="openLogin" class="auth">Log in</button>
+     </p>
+     <p>
+       <button id="openSignup" class="auth">Sign up</button>
+     </p>
+     {{/if}}
 
-      <div class="form-group">
-        <label for="email">Password</label>
-        <input class="form-control" type="password" name="password" id="password">
-      </div>
-
-      <input class="submit" type="submit">
-    </form>
   </div>
 
-  <div id="signupPopup" class="authPopup">
-    <button class="close">x</button>
-    <form method="post" action="/signup">
-      <div class="form-group">
-        <h3>Sign Up:</h3>
-        <label for="email">Email</label>
-        <input class="form-control" type="text" name="email" id="email">
-      </div>
 
-      <div class="form-group">
-        <label for="email">Password</label>
-        <input class="form-control" type="password" name="password" id="password">
-      </div>
-
-      <input class="submit" type="submit">
-    </form>
-  </div>
-
+  <!-- <div class="sidebar location">
+  </div> -->
 
   <div id="map">
   </div>
