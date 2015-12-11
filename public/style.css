@@ -92,6 +92,10 @@ path {
   display: inline-block;
 }
 
+.distancemeasurements {
+	text-shadow: 0 0 4px rgba(255,255,255,1);
+}
+
 .searchType {
   border: 5px solid white;
   -webkit-box-shadow:
@@ -110,8 +114,11 @@ path {
 }
 
 .auth {
+	color: #fff;
+	font-weight: 100;
+	font-size: 100%;
 	float: right;
-  border: 5px solid white;
+  border: 2px solid white;
   -webkit-box-shadow:
   inset 0 0 8px  rgba(0,0,0,0.1),
         0 0 16px rgba(0,0,0,0.1);
@@ -121,8 +128,12 @@ path {
   box-shadow:
   inset 0 0 8px  rgba(0,0,0,0.1),
         0 0 16px rgba(0,0,0,0.1);
-  padding: 10px;
-  background: rgba(255,255,255,0.5);
+  padding: 8px 20px;
+	background: linear-gradient(
+	    135deg,
+	    rgba(255, 33, 81, 0.9),
+	    rgba(255, 119, 41, 0.9)
+	  );
   margin: 0 20px;
 }
 
@@ -146,14 +157,12 @@ path {
   width: 100%;
   height: 100%;
   overflow:hidden;
-  background-size: cover;
-  background-position: center;
   background: linear-gradient(
     135deg,
     rgba(255, 33, 81, 0.9),
     rgba(255, 119, 41, 0.9)
     ),
-    url(http://i.imgur.com/TXARe9C.jpg);
+    url(http://i.imgur.com/TXARe9C.jpg) center / cover;
   z-index: 9999;
 }
 
@@ -194,6 +203,21 @@ path {
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	text-fill-color: transparent;
+}
+
+.leaflet-marker-icon:hover {
+	transform: scale(2);
+}
+
+.crosshairs {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 120px;
+	height: 120px;
+	margin-top: -60px; /* Half the height */
+	margin-left: -60px; /* Half the width */
+	z-index: 9998;
 }
 
 /*
