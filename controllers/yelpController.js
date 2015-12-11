@@ -6,11 +6,12 @@ var yelpController = {
     console.log(req.body);
     var params = {
       term: req.body.term,
-      // ll: "38.999, -79.011",
-      ll: "" + req.body.latitude + ", " + req.body.longitude + "",
-      // ll: "38.999, -79.011",
-      limit: 10
+      // ll: "" + req.body.latitude + ", " + req.body.longitude + "",
+      bounds: req.body.sw_lat + "," + req.body.sw_long + "|" + req.body.ne_lat + "," + req.body.ne_long,
+      limit: 20,
+      sort: 1
     };
+
     console.log(params);
     console.log(params.ll);
     Yelp.search(params)

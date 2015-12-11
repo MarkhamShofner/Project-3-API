@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Location Score</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
@@ -15,28 +16,42 @@
   <script src="soup.js"></script>
 
 </head>
+
 <body>
 
-  <div class="sidebar">
-    {{#if message}}
-      <div class="alert">{{message}}</div>
-    {{/if}}
 
-    {{#if currentUser}}
-      <p><button id="logout" class="userauth"><a href="/logout">Log out</a></button></p>
+  <div class="overlay">
+    <h1>hotmapr</h1>
+  </div>
+  <div class="sidebar location">
+
+    {{#if message}}
+    <div class="alert">{{message}}</div>
+    {{/if}} {{#if currentUser}}
+    <p>
+      <button id="logout" class="userauth"><a href="/logout">Log out</a></button>
+    </p>
     {{else}}
-       <p><button id="openLogin" class="userauth">Log in</button></p>
-       <p><button id="openSignup" class="userauth">Sign up</button></p>
+    <p>
+      <button id="openLogin" class="userauth">Log in</button>
+    </p>
+    <p>
+      <button id="openSignup" class="userauth">Sign up</button>
+    </p>
     {{/if}}
 
     <form class="search">
-      <input class="searchLatitude" type="text" name ="latitude" placeholder="Latitude">
-      <input class="searchLongitude" type="text" name ="longitude" placeholder="Longitude">
-      <input class="searchType" type="text" name ="type" placeholder="Category">
-      <input id="passParams" type="submit" value="Get Locations">
+      <input class="searchType" type="text" name="type" value="bars">
     </form>
-    <button class="test">Test this</button>
+    <!-- <button class="test">Test this</button> -->
   </div>
+  <div class="distancemeasurements">
+    <p>Average Distance:</p>
+    <p class="averagedistance"></p>
+    <p>Total Distance:</p>
+    <p class="totaldistance"></p>
+  </div>
+
 
   <div id="loginPopup" class="authPopup">
     <form method="post" action="/login">
@@ -57,25 +72,27 @@
   </div>
 
   <div id="signupPopup" class="authPopup">
-      <button class="close">x</button>
-      <form method="post" action="/signup">
-        <div class="form-group">
-          <h3>Sign Up:</h3>
-          <label for="email">Email</label>
-          <input class="form-control" type="text" name="email" id="email">
-        </div>
+    <button class="close">x</button>
+    <form method="post" action="/signup">
+      <div class="form-group">
+        <h3>Sign Up:</h3>
+        <label for="email">Email</label>
+        <input class="form-control" type="text" name="email" id="email">
+      </div>
 
-        <div class="form-group">
-          <label for="email">Password</label>
-          <input class="form-control" type="password" name="password" id="password">
-        </div>
+      <div class="form-group">
+        <label for="email">Password</label>
+        <input class="form-control" type="password" name="password" id="password">
+      </div>
 
-        <input class="submit" type="submit">
-      </form>
-    </div>
+      <input class="submit" type="submit">
+    </form>
+  </div>
+
 
   <div id="map">
   </div>
-  
+
 </body>
+
 </html>
