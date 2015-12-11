@@ -66,12 +66,12 @@ path {
 
 .top-bar {
   height: 50px;
-  width: 90%;
   z-index: 8001;
   background-color: #fff;
   position: absolute;
   top: 0;
-  right: 0;
+  left: 45px;
+	padding: 15px;
 }
 
 .top-bar .logo {
@@ -84,6 +84,7 @@ path {
   font-style: italic;
   font-size: 45px;
   padding: 0;
+	margin: 0;
   top: 0;
 }
 
@@ -134,7 +135,7 @@ path {
   z-index: 9999;
 }
 
-.overlay > h1 {
+.overlay h1 {
   font-family: Helvetica, sans-serif;
   font-weight: 900;
   font-style: italic;

@@ -1,5 +1,21 @@
 # heatmapr
-### @ga-dc WDI Project 3
+#### @ga-dc WDI Project 3
+
+Welcome to the **hottest new app** for checking out maps: **heatmapr**.
+
+![heatmapr screenshot](http://i.imgur.com/YiGnp3n.png )
+
+**Key Features:**
+* **Loads OpenStreetMap data** using Leaflet.js and Mapbox
+* **Automatically locates the user** and zeroes in on their location on app load
+* **Automatically pulls data from the Yelp Search API** on every load, zoom, and scroll
+* Narrows down data returned from Yelp with a **super simple searchbox**: type what you're looking for and start cruising around the map. **It Just Works®**, pulling (up to) the top 20 locations every time you move the map, ranked by distance from map center.
+* **Shows the Yelp rating for each location as a colored circle** underneath each location marker. Bluer is higher, yellow is meh, red is bad. See at a glance which locations are worth checking out.
+* **Shows a popup with expanded information about each location when you hover over the markers.** Each popup gives you the location's name, location type, address, and an image, as well as a link to Yelp to learn more.
+* **Calculates the average distance between each shown location and map center** on every load, zoom, and scroll. Deciding between two apartment complexes? Want to see which of them is closer to the area's hottest bars? Oh yeah, we got you.
+
+Coming Soon:
+* We've got a **user login system** to make an account. Soon, you'll be able to select and save favorite locations.
 
 Group(name, Github username):
 * Josh Cohen, jacohen10
