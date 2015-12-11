@@ -76,10 +76,6 @@ $(document).ready(function(){
 
   $('#modal').on('click', function(e){ e.preventDefault(); });
 
-  map.on('load', function(){
-    setTimeout(map.zoomIn(1), 1000);
-  });
-
   map.on('moveend', function() {
     $(".leaflet-marker-pane").empty();
     $(".leaflet-shadow-pane").empty();
